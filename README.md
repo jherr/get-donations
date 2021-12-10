@@ -9,8 +9,16 @@ This script requires Node v16.0.0 or higher. Install Node using [nvm](https://gi
 
 # Installation
 
+Get the indexes data for 2017-2021. You only need to do this once. The files
+are large.
+
 ```sh
-./seed.sh
+./get-indexes.sh
+```
+
+Install the requisite Node modules.
+
+```sh
 npm install
 ```
 
