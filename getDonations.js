@@ -26,6 +26,24 @@ const fields = [
   "TotalExpensePct",
 ];
 
+// Setup the output arrays
+const tsvReport = [];
+const jsonReport = [];
+
+// Setup the TSV header
+const header = [
+  "EIN",
+  "Business Name",
+  "Tax End Date",
+  "Total Functional Expenses",
+];
+for (const line of lines) {
+  for (const field of fields) {
+    header.push(`${line} ${field}`);
+  }
+}
+tsvReport.push(header.join("\t"));
+
 /**
  * Gets the XML data for the given EIN
  * @param {number} ein
@@ -59,7 +77,10 @@ const getXMLData = async (ein) => {
             }
 
             // Read it from the cache
-            reports.push(fs.readFileSync(`./cache/${fname}`).toString());
+            const xml = fs.readFileSync(`./cache/${fname}`).toString();
+
+            // Parse and store the XML document
+            reports.push(new DOMParser().parseFromString(xml, "text/xml"));
           }
         }
       }
@@ -67,10 +88,6 @@ const getXMLData = async (ein) => {
   }
   return reports;
 };
-
-// Setup the output arrays
-const tsvReport = [];
-const jsonReport = [];
 
 /**
  * Runs the report for a given EIN
@@ -84,10 +101,7 @@ async function runReport(ein) {
   // are duplicates
   const handled = {};
 
-  for (const xml of xmlReports) {
-    // Parse the XML document
-    const doc = new DOMParser().parseFromString(xml, "text/xml");
-
+  for (const doc of xmlReports) {
     // Get the tax period end date
     const taxPeriodEndDate =
       doc.documentElement.getElementsByTagName("TaxPeriodEndDt")[0].textContent;
@@ -98,10 +112,8 @@ async function runReport(ein) {
 
       // Get the business name from the Filer
       const businessName = doc.documentElement
-        .getElementsByTagName("Filer")
-        .item(0)
-        .getElementsByTagName("BusinessNameLine1Txt")
-        .item(0).textContent;
+        .getElementsByTagName("Filer")[0]
+        .getElementsByTagName("BusinessNameLine1Txt")[0].textContent;
 
       const cols = [];
       cols.push(ein);
@@ -109,14 +121,16 @@ async function runReport(ein) {
       cols.push(taxPeriodEndDate);
 
       // Get 990/PartIX/line 25/Col a
-      const elTotalFunctionalExpensesGrp = doc.documentElement
-        .getElementsByTagName("TotalFunctionalExpensesGrp")
-        .item(0);
+      const elTotalFunctionalExpensesGrp =
+        doc.documentElement.getElementsByTagName(
+          "TotalFunctionalExpensesGrp"
+        )[0];
       const totalFunctionalExpensesAmt =
-        elTotalFunctionalExpensesGrp?.getElementsByTagName("TotalAmt")?.item(0)
+        elTotalFunctionalExpensesGrp?.getElementsByTagName("TotalAmt")?.[0]
           ?.textContent ?? "";
       cols.push(totalFunctionalExpensesAmt);
 
+      // Set up the row for the JSON report
       const jsonObj = {
         ein,
         businessName,
@@ -125,15 +139,14 @@ async function runReport(ein) {
       };
 
       // Find the schedule H section
-      const scheduleH = doc.documentElement
-        .getElementsByTagName("IRS990ScheduleH")
-        .item(0);
+      const scheduleH =
+        doc.documentElement.getElementsByTagName("IRS990ScheduleH")[0];
 
       // Loop through the lines and fields to grab the data
       for (const line of lines) {
-        const lineItem = scheduleH?.getElementsByTagName?.(line)?.item(0);
+        const lineItem = scheduleH?.getElementsByTagName?.(line)?.[0];
         for (const field of fields) {
-          const fieldItem = lineItem?.getElementsByTagName?.(field)?.item(0);
+          const fieldItem = lineItem?.getElementsByTagName?.(field)?.[0];
           if (lineItem && fieldItem) {
             cols.push(fieldItem.textContent);
             jsonObj[`${line}_${field}`] = parseFloat(fieldItem.textContent);
@@ -150,26 +163,12 @@ async function runReport(ein) {
 }
 
 (async function () {
-  // Setup the TSV header
-  const header = [
-    "EIN",
-    "Business Name",
-    "Tax End Date",
-    "Total Functional Expenses",
-  ];
-  for (const line of lines) {
-    for (const field of fields) {
-      header.push(`${line} ${field}`);
-    }
-  }
-  tsvReport.push(header.join("\t"));
-
   // Go throught the eins.txt file and run the report for each EIN
   const eins = fs
     .readFileSync("./eins.txt")
     .toString()
     .split("\n")
-    .filter((s) => s.length);
+    .filter((s) => s.length > 0);
   for (const ein of eins) {
     console.log(`Processing ${ein}`);
     await runReport(parseInt(ein.trim()));
