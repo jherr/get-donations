@@ -1,7 +1,7 @@
 Tax Scraper
 ===========
 
-Simple 990 tax scraper.
+Simple IRS 990 Schedule H tax scraper.
 
 # Prerequisites
 
