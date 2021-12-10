@@ -1,0 +1,14 @@
+{
+  "name": "get-donations",
+  "version": "1.0.0",
+  "main": "getDonations.js",
+  "license": "MIT",
+  "author": {
+    "name": "Jack Herrington",
+    "email": "jherr@pobox.com"
+  },
+  "dependencies": {
+    "node-fetch": "2.0.0",
+    "xmldom": "^0.6.0"
+  }
+}
