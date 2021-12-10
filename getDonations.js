@@ -2,7 +2,7 @@ const fs = require("fs");
 const fetch = require("node-fetch");
 const { DOMParser } = require("xmldom");
 
-// The lines within schedule H that we are interested in
+// The lines within schedule H, part I, line 7 that we are interested in
 const lines = [
   "FinancialAssistanceAtCostTyp",
   "UnreimbursedMedicaidGrp",
@@ -34,6 +34,7 @@ const jsonReport = [];
 const header = [
   "EIN",
   "Business Name",
+  "Tax Year",
   "Tax End Date",
   "Total Functional Expenses",
 ];
@@ -80,7 +81,8 @@ const getXMLData = async (ein) => {
             const xml = fs.readFileSync(`./cache/${fname}`).toString();
 
             // Parse and store the XML document
-            reports.push(new DOMParser().parseFromString(xml, "text/xml"));
+            const xmlDoc = new DOMParser().parseFromString(xml, "text/xml");
+            reports.push(xmlDoc);
           }
         }
       }
@@ -106,6 +108,10 @@ async function runReport(ein) {
     const taxPeriodEndDate =
       doc.documentElement.getElementsByTagName("TaxPeriodEndDt")[0].textContent;
 
+    // Get the tax year
+    const taxYear =
+      doc.documentElement.getElementsByTagName("TaxYr")[0].textContent;
+
     // Only process the report if we haven't already done this date for this EIN
     if (!handled[taxPeriodEndDate]) {
       handled[taxPeriodEndDate] = true;
@@ -118,6 +124,7 @@ async function runReport(ein) {
       const cols = [];
       cols.push(ein);
       cols.push(businessName);
+      cols.push(taxYear);
       cols.push(taxPeriodEndDate);
 
       // Get 990/PartIX/line 25/Col a
@@ -134,6 +141,7 @@ async function runReport(ein) {
       const jsonObj = {
         ein,
         businessName,
+        taxYear: parseInt(taxYear, 10),
         taxPeriodEndDate,
         totalFunctionalExpensesAmt: parseFloat(totalFunctionalExpensesAmt),
       };
@@ -154,6 +162,11 @@ async function runReport(ein) {
             cols.push("");
           }
         }
+      }
+
+      for (const key of ["BadDebtExpenseAmt", "ReimbursedByMedicareAmt"]) {
+        const value = scheduleH.getElementsByTagName(key)[0].textContent;
+        jsonObj[key] = parseFloat(value);
       }
 
       tsvReport.push(cols.join("\t"));
