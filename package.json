@@ -8,6 +8,7 @@
     "email": "jherr@pobox.com"
   },
   "dependencies": {
+    "csv-writer": "^1.6.0",
     "node-fetch": "2.0.0",
     "xmldom": "^0.6.0"
   }

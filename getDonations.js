@@ -1,55 +1,66 @@
 const fs = require("fs");
 const fetch = require("node-fetch");
 const { DOMParser } = require("xmldom");
+const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 
 // The lines within schedule H, part I, line 7 that we are interested in
-const LINES = [
-  "FinancialAssistanceAtCostTyp",
-  "UnreimbursedMedicaidGrp",
-  "TotalFinancialAssistanceTyp",
-  "CommunityHealthServicesGrp",
-  "HealthProfessionsEducationGrp",
-  "SubsidizedHealthServicesGrp",
-  "ResearchGrp",
-  "CashAndInKindContributionsGrp",
-  "TotalOtherBenefitsGrp",
-  "TotalCommunityBenefitsGrp",
-  "CommunitySupportGrp",
-  "TotalCommuntityBuildingActyGrp",
-];
+const LINE_TITLES = {
+  FinancialAssistanceAtCostTyp: "Financial Assistance at Cost",
+  UnreimbursedMedicaidGrp: "Unreimbursed Medicaid",
+  TotalFinancialAssistanceTyp: "Total Financial Assistance",
+  CommunityHealthServicesGrp: "Community Health Services",
+  HealthProfessionsEducationGrp: "Health Professions and Education",
+  SubsidizedHealthServicesGrp: "Subsidized Health Services",
+  ResearchGrp: "Research",
+  CashAndInKindContributionsGrp: "Cash and In-Kind Contributions",
+  TotalOtherBenefitsGrp: "Total Other Benefits",
+  TotalCommunityBenefitsGrp: "Total Community Benefits",
+  CommunitySupportGrp: "Community Support",
+  TotalCommuntityBuildingActyGrp: "Total Community Building Activities",
+};
+const LINES = Object.keys(LINE_TITLES);
 
 // The fields within each line that we want to extract
-const FIELDS = [
-  "TotalCommunityBenefitExpnsAmt",
-  "DirectOffsettingRevenueAmt",
-  "NetCommunityBenefitExpnsAmt",
-  "TotalExpensePct",
-];
+const FIELDS_TITLES = {
+  TotalCommunityBenefitExpnsAmt: "Total Amount",
+  DirectOffsettingRevenueAmt: "Direct Offsetting Revenue",
+  NetCommunityBenefitExpnsAmt: "Net Benefit",
+  TotalExpensePct: "Total Expense Percentage",
+};
+const FIELDS = Object.keys(FIELDS_TITLES);
 
 // Any one off tag names within schedule H that we want to extract
-const EXTRA_FIELDS = ["BadDebtExpenseAmt", "ReimbursedByMedicareAmt"];
+const EXTRA_FIELDS_TEXT = {
+  BadDebtExpenseAmt: "Bad Debt Expense Amount",
+  ReimbursedByMedicareAmt: "Reimbursed By Medicare Amount",
+};
+const EXTRA_FIELDS = Object.keys(EXTRA_FIELDS_TEXT);
 
-// Setup the output arrays
-const tsvReport = [];
-
-// Setup the TSV header
 const header = [
-  "EIN",
-  "Business Name",
-  "Tax Year",
-  "Tax End Date",
-  "Return Timestamp",
-  "Total Functional Expenses",
+  { id: "ein", title: "EIN" },
+  { id: "businessName", title: "Business Name" },
+  { id: "taxYear", title: "Tax Year" },
+  { id: "taxEndDate", title: "Tax End Date" },
+  { id: "returnTimeStamp", title: "Return Timestamp" },
+  { id: "totalFunctionalExpenses", title: "Total Functional Expenses" },
 ];
 for (const line of LINES) {
   for (const field of FIELDS) {
-    header.push(`${line} ${field}`);
+    header.push({
+      id: `${line}_${field}`,
+      title: `${LINE_TITLES[line]} ${FIELDS_TITLES[field]}`,
+    });
   }
 }
-for (const field of EXTRA_FIELDS) {
-  header.push(field);
+for (const id of EXTRA_FIELDS) {
+  header.push({ id, title: EXTRA_FIELDS_TEXT[id] });
 }
-tsvReport.push(header.join("\t"));
+
+const csvWriter = createCsvWriter({
+  path: "report.csv",
+  header,
+});
+const records = [];
 
 const EIN_INDEX_PATH = "./cache/indexByEIN.json";
 
@@ -122,6 +133,13 @@ const getXMLData = async (ein) => {
 };
 
 /**
+ * Parses to a float if value is a number, otherwise returns empty string
+ * @param {strig} number as a string or an empty string
+ * @returns
+ */
+const parseNumber = (value) => (value.length > 0 ? parseFloat(value) : "");
+
+/**
  * Runs the report for a given EIN
  * @param {number} ein
  */
@@ -130,37 +148,33 @@ async function runReport(ein) {
   const xmlReports = await getXMLData(ein);
 
   for (const doc of xmlReports) {
-    const tsvColumns = [];
-    tsvColumns.push(ein);
+    const record = {};
+    record.ein = ein;
 
     // Get the business name from the Filer
-    const businessName = doc.documentElement
+    record.businessName = doc.documentElement
       .getElementsByTagName("Filer")[0]
       .getElementsByTagName("BusinessNameLine1Txt")[0].textContent;
-    tsvColumns.push(businessName);
 
     // Get the tax year
-    const taxYear =
+    record.taxYear =
       doc.documentElement.getElementsByTagName("TaxYr")[0].textContent;
-    tsvColumns.push(taxYear);
 
     // Get the tax period end date
-    const taxPeriodEndDate =
+    record.taxEndDate =
       doc.documentElement.getElementsByTagName("TaxPeriodEndDt")[0].textContent;
-    tsvColumns.push(taxPeriodEndDate);
 
     // Get the tax period end date
-    const returnTimestamp =
+    record.returnTimeStamp =
       doc.documentElement.getElementsByTagName("ReturnTs")[0].textContent;
-    tsvColumns.push(returnTimestamp);
 
     // Get 990/PartIX/line 25/Col a
     const elTotalFunctionalExpensesGrp =
       doc.documentElement.getElementsByTagName("TotalFunctionalExpensesGrp")[0];
-    const totalFunctionalExpensesAmt =
+    record.totalFunctionalExpenses = parseNumber(
       elTotalFunctionalExpensesGrp?.getElementsByTagName("TotalAmt")?.[0]
-        ?.textContent ?? "";
-    tsvColumns.push(totalFunctionalExpensesAmt);
+        ?.textContent ?? ""
+    );
 
     // Find the schedule H section
     const scheduleH =
@@ -171,17 +185,17 @@ async function runReport(ein) {
       const lineItem = scheduleH?.getElementsByTagName?.(line)?.[0];
       for (const field of FIELDS) {
         const fieldItem = lineItem?.getElementsByTagName?.(field)?.[0];
-        tsvColumns.push(fieldItem?.textContent ?? "");
+        record[`${line}_${field}`] = parseNumber(fieldItem?.textContent ?? "");
       }
     }
 
     // Get any extra fields from schedule H
     for (const key of EXTRA_FIELDS) {
       const value = scheduleH.getElementsByTagName(key)[0].textContent;
-      tsvColumns.push(value);
+      record[key] = parseNumber(value);
     }
 
-    tsvReport.push(tsvColumns.join("\t"));
+    records.push(record);
   }
 }
 
@@ -198,5 +212,5 @@ async function runReport(ein) {
   }
 
   // Write out the reports
-  fs.writeFileSync("./report.tsv", tsvReport.join("\n"));
+  await csvWriter.writeRecords(records);
 })();
