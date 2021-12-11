@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const { DOMParser } = require("xmldom");
 
 // The lines within schedule H, part I, line 7 that we are interested in
-const lines = [
+const LINES = [
   "FinancialAssistanceAtCostTyp",
   "UnreimbursedMedicaidGrp",
   "TotalFinancialAssistanceTyp",
@@ -19,7 +19,7 @@ const lines = [
 ];
 
 // The fields within each line that we want to extract
-const fields = [
+const FIELDS = [
   "TotalCommunityBenefitExpnsAmt",
   "DirectOffsettingRevenueAmt",
   "NetCommunityBenefitExpnsAmt",
@@ -38,12 +38,34 @@ const header = [
   "Tax End Date",
   "Total Functional Expenses",
 ];
-for (const line of lines) {
-  for (const field of fields) {
+for (const line of LINES) {
+  for (const field of FIELDS) {
     header.push(`${line} ${field}`);
   }
 }
 tsvReport.push(header.join("\t"));
+
+const EIN_INDEX_PATH = "./cache/index.json";
+
+// Pre-compile an index of EINs to URLs if it doesn't exist
+if (!fs.existsSync(EIN_INDEX_PATH)) {
+  const index = {};
+  for (const file of fs.readdirSync(`./indexes`)) {
+    if (file.includes(".json")) {
+      const json = JSON.parse(fs.readFileSync(`./indexes/${file}`));
+      for (const k of Object.keys(json)) {
+        for (const filing of json[k]) {
+          index[filing.EIN] = index[filing.EIN] ?? [];
+          index[filing.EIN].push(filing.URL);
+        }
+      }
+    }
+  }
+  fs.writeFileSync(EIN_INDEX_PATH, JSON.stringify(index));
+}
+
+// Load the index of EINs to URLs
+const einIndex = JSON.parse(fs.readFileSync(EIN_INDEX_PATH));
 
 /**
  * Gets the XML data for the given EIN
@@ -53,41 +75,27 @@ tsvReport.push(header.join("\t"));
 const getXMLData = async (ein) => {
   const reports = [];
 
-  // Scan the indexes directoy
-  for (const file of fs.readdirSync(`./indexes`)) {
-    if (file.includes(".json")) {
-      // Read each index file
-      const json = JSON.parse(fs.readFileSync(`./indexes/${file}`));
+  // Use the index to get the URLs for the EIN
+  for (const url of einIndex[ein] ?? []) {
+    // Create the filename by stripping the prefix off the data URL
+    const fname = url.replace(/https:\/\/s3.amazonaws.com\/irs-form-990\//, "");
 
-      for (const k of Object.keys(json)) {
-        for (const filing of json[k]) {
-          // Look for the EIN
-          if (parseInt(filing.EIN) === ein) {
-            // Create the filename by stripping the prefix off the data URL
-            const fname = filing.URL.replace(
-              /https:\/\/s3.amazonaws.com\/irs-form-990\//,
-              ""
-            );
-
-            // Check to see if we have it in the cache already, get it if not
-            if (!fs.existsSync(`./cache/${fname}`)) {
-              console.log(`Downloading ${filing.URL}`);
-              const response = await fetch(filing.URL);
-              const xml = await response.text();
-              fs.writeFileSync(`./cache/${fname}`, xml);
-            }
-
-            // Read it from the cache
-            const xml = fs.readFileSync(`./cache/${fname}`).toString();
-
-            // Parse and store the XML document
-            const xmlDoc = new DOMParser().parseFromString(xml, "text/xml");
-            reports.push(xmlDoc);
-          }
-        }
-      }
+    // Check to see if we have it in the cache already, get it if not
+    if (!fs.existsSync(`./cache/${fname}`)) {
+      console.log(`Downloading ${url}`);
+      const response = await fetch(url);
+      const xml = await response.text();
+      fs.writeFileSync(`./cache/${fname}`, xml);
     }
+
+    // Read it from the cache
+    const xml = fs.readFileSync(`./cache/${fname}`).toString();
+
+    // Parse and store the XML document
+    const xmlDoc = new DOMParser().parseFromString(xml, "text/xml");
+    reports.push(xmlDoc);
   }
+
   return reports;
 };
 
@@ -151,9 +159,9 @@ async function runReport(ein) {
         doc.documentElement.getElementsByTagName("IRS990ScheduleH")[0];
 
       // Loop through the lines and fields to grab the data
-      for (const line of lines) {
+      for (const line of LINES) {
         const lineItem = scheduleH?.getElementsByTagName?.(line)?.[0];
-        for (const field of fields) {
+        for (const field of FIELDS) {
           const fieldItem = lineItem?.getElementsByTagName?.(field)?.[0];
           if (lineItem && fieldItem) {
             cols.push(fieldItem.textContent);
