@@ -51,7 +51,12 @@ for (const field of EXTRA_FIELDS) {
 }
 tsvReport.push(header.join("\t"));
 
-const EIN_INDEX_PATH = "./cache/index.json";
+const EIN_INDEX_PATH = "./cache/indexByEIN.json";
+
+// Remove the old index if it's there
+if (fs.existsSync("./cache/index.json")) {
+  fs.unlinkSync("./cache/index.json");
+}
 
 // Pre-compile an index of EINs to URLs if it doesn't exist
 if (!fs.existsSync(EIN_INDEX_PATH)) {
