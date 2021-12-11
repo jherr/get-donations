@@ -26,9 +26,11 @@ const FIELDS = [
   "TotalExpensePct",
 ];
 
+// Any one off tag names within schedule H that we want to extract
+const EXTRA_FIELDS = ["BadDebtExpenseAmt", "ReimbursedByMedicareAmt"];
+
 // Setup the output arrays
 const tsvReport = [];
-const jsonReport = [];
 
 // Setup the TSV header
 const header = [
@@ -36,12 +38,16 @@ const header = [
   "Business Name",
   "Tax Year",
   "Tax End Date",
+  "Return Timestamp",
   "Total Functional Expenses",
 ];
 for (const line of LINES) {
   for (const field of FIELDS) {
     header.push(`${line} ${field}`);
   }
+}
+for (const field of EXTRA_FIELDS) {
+  header.push(field);
 }
 tsvReport.push(header.join("\t"));
 
@@ -56,7 +62,10 @@ if (!fs.existsSync(EIN_INDEX_PATH)) {
       for (const k of Object.keys(json)) {
         for (const filing of json[k]) {
           index[filing.EIN] = index[filing.EIN] ?? [];
-          index[filing.EIN].push(filing.URL);
+          index[filing.EIN].push(
+            filing.URL.replace("https://s3.amazonaws.com/irs-form-990/", "")
+          );
+          index[filing.EIN].sort();
         }
       }
     }
@@ -73,18 +82,20 @@ const einIndex = JSON.parse(fs.readFileSync(EIN_INDEX_PATH));
  * @returns
  */
 const getXMLData = async (ein) => {
-  const reports = [];
+  // Create a lookup of year to tax document
+  const reportsByYear = {};
 
   // Use the index to get the URLs for the EIN
-  for (const url of einIndex[ein] ?? []) {
-    // Create the filename by stripping the prefix off the data URL
-    const fname = url.replace(/https:\/\/s3.amazonaws.com\/irs-form-990\//, "");
-
+  for (const fname of einIndex[ein] ?? []) {
     // Check to see if we have it in the cache already, get it if not
     if (!fs.existsSync(`./cache/${fname}`)) {
+      const url = `https://s3.amazonaws.com/irs-form-990/${fname}`;
+
       console.log(`Downloading ${url}`);
+
       const response = await fetch(url);
       const xml = await response.text();
+
       fs.writeFileSync(`./cache/${fname}`, xml);
     }
 
@@ -92,11 +103,17 @@ const getXMLData = async (ein) => {
     const xml = fs.readFileSync(`./cache/${fname}`).toString();
 
     // Parse and store the XML document
-    const xmlDoc = new DOMParser().parseFromString(xml, "text/xml");
-    reports.push(xmlDoc);
+    const doc = new DOMParser().parseFromString(xml, "text/xml");
+
+    // Get the tax year
+    const taxYear =
+      doc.documentElement.getElementsByTagName("TaxYr")[0].textContent;
+
+    // Store the document by year (overwriting any previous documents for this year)
+    reportsByYear[taxYear] = doc;
   }
 
-  return reports;
+  return Object.values(reportsByYear);
 };
 
 /**
@@ -107,79 +124,59 @@ async function runReport(ein) {
   // Grab the XML data
   const xmlReports = await getXMLData(ein);
 
-  // Keep an array of reports we've already processed since there
-  // are duplicates
-  const handled = {};
-
   for (const doc of xmlReports) {
-    // Get the tax period end date
-    const taxPeriodEndDate =
-      doc.documentElement.getElementsByTagName("TaxPeriodEndDt")[0].textContent;
+    const tsvColumns = [];
+    tsvColumns.push(ein);
+
+    // Get the business name from the Filer
+    const businessName = doc.documentElement
+      .getElementsByTagName("Filer")[0]
+      .getElementsByTagName("BusinessNameLine1Txt")[0].textContent;
+    tsvColumns.push(businessName);
 
     // Get the tax year
     const taxYear =
       doc.documentElement.getElementsByTagName("TaxYr")[0].textContent;
+    tsvColumns.push(taxYear);
 
-    // Only process the report if we haven't already done this date for this EIN
-    if (!handled[taxPeriodEndDate]) {
-      handled[taxPeriodEndDate] = true;
+    // Get the tax period end date
+    const taxPeriodEndDate =
+      doc.documentElement.getElementsByTagName("TaxPeriodEndDt")[0].textContent;
+    tsvColumns.push(taxPeriodEndDate);
 
-      // Get the business name from the Filer
-      const businessName = doc.documentElement
-        .getElementsByTagName("Filer")[0]
-        .getElementsByTagName("BusinessNameLine1Txt")[0].textContent;
+    // Get the tax period end date
+    const returnTimestamp =
+      doc.documentElement.getElementsByTagName("ReturnTs")[0].textContent;
+    tsvColumns.push(returnTimestamp);
 
-      const cols = [];
-      cols.push(ein);
-      cols.push(businessName);
-      cols.push(taxYear);
-      cols.push(taxPeriodEndDate);
+    // Get 990/PartIX/line 25/Col a
+    const elTotalFunctionalExpensesGrp =
+      doc.documentElement.getElementsByTagName("TotalFunctionalExpensesGrp")[0];
+    const totalFunctionalExpensesAmt =
+      elTotalFunctionalExpensesGrp?.getElementsByTagName("TotalAmt")?.[0]
+        ?.textContent ?? "";
+    tsvColumns.push(totalFunctionalExpensesAmt);
 
-      // Get 990/PartIX/line 25/Col a
-      const elTotalFunctionalExpensesGrp =
-        doc.documentElement.getElementsByTagName(
-          "TotalFunctionalExpensesGrp"
-        )[0];
-      const totalFunctionalExpensesAmt =
-        elTotalFunctionalExpensesGrp?.getElementsByTagName("TotalAmt")?.[0]
-          ?.textContent ?? "";
-      cols.push(totalFunctionalExpensesAmt);
+    // Find the schedule H section
+    const scheduleH =
+      doc.documentElement.getElementsByTagName("IRS990ScheduleH")[0];
 
-      // Set up the row for the JSON report
-      const jsonObj = {
-        ein,
-        businessName,
-        taxYear: parseInt(taxYear, 10),
-        taxPeriodEndDate,
-        totalFunctionalExpensesAmt: parseFloat(totalFunctionalExpensesAmt),
-      };
-
-      // Find the schedule H section
-      const scheduleH =
-        doc.documentElement.getElementsByTagName("IRS990ScheduleH")[0];
-
-      // Loop through the lines and fields to grab the data
-      for (const line of LINES) {
-        const lineItem = scheduleH?.getElementsByTagName?.(line)?.[0];
-        for (const field of FIELDS) {
-          const fieldItem = lineItem?.getElementsByTagName?.(field)?.[0];
-          if (lineItem && fieldItem) {
-            cols.push(fieldItem.textContent);
-            jsonObj[`${line}_${field}`] = parseFloat(fieldItem.textContent);
-          } else {
-            cols.push("");
-          }
-        }
+    // Loop through the lines and fields to grab the data
+    for (const line of LINES) {
+      const lineItem = scheduleH?.getElementsByTagName?.(line)?.[0];
+      for (const field of FIELDS) {
+        const fieldItem = lineItem?.getElementsByTagName?.(field)?.[0];
+        tsvColumns.push(fieldItem?.textContent ?? "");
       }
-
-      for (const key of ["BadDebtExpenseAmt", "ReimbursedByMedicareAmt"]) {
-        const value = scheduleH.getElementsByTagName(key)[0].textContent;
-        jsonObj[key] = parseFloat(value);
-      }
-
-      tsvReport.push(cols.join("\t"));
-      jsonReport.push(jsonObj);
     }
+
+    // Get any extra fields from schedule H
+    for (const key of EXTRA_FIELDS) {
+      const value = scheduleH.getElementsByTagName(key)[0].textContent;
+      tsvColumns.push(value);
+    }
+
+    tsvReport.push(tsvColumns.join("\t"));
   }
 }
 
@@ -197,5 +194,4 @@ async function runReport(ein) {
 
   // Write out the reports
   fs.writeFileSync("./report.tsv", tsvReport.join("\n"));
-  fs.writeFileSync("./report.json", JSON.stringify(jsonReport, null, 2));
 })();
