@@ -3,3 +3,4 @@ report.*
 indexes/*.json
 cache/index.json
 cache/indexByEIN.json
+.DS_Store
