@@ -122,14 +122,18 @@ const getXMLData = async (ein) => {
     const doc = new DOMParser().parseFromString(xml, "text/xml");
 
     // Get the tax year
-    const taxYear =
-      doc.documentElement.getElementsByTagName("TaxYr")[0].textContent;
+    const taxYr = doc.documentElement.getElementsByTagName("TaxYr");
 
     // Store the document by year (overwriting any previous documents for this year)
-    reportsByYear[taxYear] = doc;
+    if (taxYr[0]) {
+      const taxYear = taxYr[0].textContent;
+      reportsByYear[taxYear] = doc;
+    } else {
+      console.log(`Ignoring ${fname} because of a format change`);
+    }
   }
 
-  return Object.values(reportsByYear);
+  return reportsByYear;
 };
 
 /**
@@ -147,14 +151,16 @@ async function runReport(ein) {
   // Grab the XML data
   const xmlReports = await getXMLData(ein);
 
-  for (const doc of xmlReports) {
+  for (const year in xmlReports) {
+    const doc = xmlReports[year];
     const record = {};
     record.ein = ein;
 
     // Get the business name from the Filer
-    record.businessName = doc.documentElement
-      .getElementsByTagName("Filer")[0]
-      .getElementsByTagName("BusinessNameLine1Txt")[0].textContent;
+    const filer = doc.documentElement.getElementsByTagName("Filer")[0];
+    record.businessName =
+      filer.getElementsByTagName("BusinessNameLine1Txt")?.[0]?.textContent ??
+      filer.getElementsByTagName("BusinessNameLine1")?.[0]?.textContent;
 
     // Get the tax year
     record.taxYear =
