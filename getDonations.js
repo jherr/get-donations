@@ -101,6 +101,12 @@ const getXMLData = async (ein) => {
   // Create a lookup of year to tax document
   const reportsByYear = {};
 
+  const years = fs
+    .readFileSync("./years.txt")
+    .toString()
+    .split("\n")
+    .filter((y) => y.length > 0);
+
   // Use the index to get the URLs for the EIN
   for (const fname of einIndex[ein] ?? []) {
     // Check to see if we have it in the cache already, get it if not
@@ -127,7 +133,13 @@ const getXMLData = async (ein) => {
     // Store the document by year (overwriting any previous documents for this year)
     if (taxYr[0]) {
       const taxYear = taxYr[0].textContent;
-      reportsByYear[taxYear] = doc;
+      if (years.includes(taxYr[0].textContent)) {
+        reportsByYear[taxYear] = doc;
+      } else {
+        console.log(
+          `Ignoring ${fname} for year ${taxYear} becuse ${taxYear} is not in years.txt`
+        );
+      }
     } else {
       console.log(`Ignoring ${fname} because of a format change`);
     }

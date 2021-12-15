@@ -48,7 +48,7 @@ The files listed below are the output of the `getDonations` code after the progr
 | 202001059349300920_public.xml | 2018 |
 | 202131029349301403_public.xml | 2019 |
 
-These files are listed in the indexes, which is created by `get-indexes.sh` and located in the `indexes` directory. The data in the index file is an exact copy of the data from the S3 store.
+These files are listed in the indexes, which are created by `get-indexes.sh` and located in the `indexes` directory. The data in the index file is an exact copy of the data from the S3 store.
 
 | Index file | Return XML files | Years |
 | ---------- | ---------------- | ----- |
