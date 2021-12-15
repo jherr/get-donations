@@ -3,6 +3,20 @@ const fetch = require("node-fetch");
 const { DOMParser } = require("xmldom");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 
+function getValuesFromTextFile(fileName) {
+  const values = [];
+  fs.readFileSync(fileName)
+    .toString()
+    .split("\n")
+    .forEach((line) => {
+      const out = line.match(/^(\d+)/);
+      if (out) {
+        values.push(out[1]);
+      }
+    });
+  return values;
+}
+
 // The lines within schedule H, part I, line 7 that we are interested in
 const LINE_TITLES = {
   FinancialAssistanceAtCostTyp: "Financial Assistance at Cost",
@@ -101,11 +115,7 @@ const getXMLData = async (ein) => {
   // Create a lookup of year to tax document
   const reportsByYear = {};
 
-  const years = fs
-    .readFileSync("./years.txt")
-    .toString()
-    .split("\n")
-    .filter((y) => y.length > 0);
+  const years = getValuesFromTextFile("./years.txt");
 
   // Use the index to get the URLs for the EIN
   for (const fname of einIndex[ein] ?? []) {
@@ -219,11 +229,7 @@ async function runReport(ein) {
 
 (async function () {
   // Go throught the eins.txt file and run the report for each EIN
-  const eins = fs
-    .readFileSync("./eins.txt")
-    .toString()
-    .split("\n")
-    .filter((s) => s.length > 0);
+  const eins = getValuesFromTextFile("./eins.txt");
   for (const ein of eins) {
     console.log(`Processing ${ein}`);
     await runReport(parseInt(ein.trim()));
