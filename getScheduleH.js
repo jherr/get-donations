@@ -3,6 +3,12 @@ const fetch = require("node-fetch");
 const { DOMParser } = require("xmldom");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 
+/**
+ * Reads all uncommented integers from a text file
+ *
+ * @param {string} fileName Input file name
+ * @returns
+ */
 function getValuesFromTextFile(fileName) {
   const values = [];
   fs.readFileSync(fileName)
@@ -16,6 +22,11 @@ function getValuesFromTextFile(fileName) {
     });
   return values;
 }
+
+/*
+Valuable metadata resource about the fields:
+https://github.com/jsfenfen/990-xml-metadata/blob/master/variables.csv
+*/
 
 // The lines within schedule H, part I, line 7 that we are interested in
 const LINE_TITLES = {
@@ -45,8 +56,12 @@ const FIELDS = Object.keys(FIELDS_TITLES);
 
 // Any one off tag names within schedule H that we want to extract
 const EXTRA_FIELDS_TEXT = {
+  BadDebtExpenseReportedInd: "Bad Debt Expense Reported",
   BadDebtExpenseAmt: "Bad Debt Expense Amount",
+  BadDebtExpenseAttributableAmt: "Bad Debt Expense Attributable Amount",
   ReimbursedByMedicareAmt: "Reimbursed By Medicare Amount",
+  CostOfCareReimbursedByMedcrAmt: "Cost of Care Reimbursed By Medicare Amount",
+  MedicareSurplusOrShortfallAmt: "Medicare Surplus or Shortfall Amount",
 };
 const EXTRA_FIELDS = Object.keys(EXTRA_FIELDS_TEXT);
 
@@ -219,8 +234,12 @@ async function runReport(ein) {
 
     // Get any extra fields from schedule H
     for (const key of EXTRA_FIELDS) {
-      const value = scheduleH.getElementsByTagName(key)[0].textContent;
-      record[key] = parseNumber(value);
+      const tag = scheduleH.getElementsByTagName(key);
+      if (tag.length > 0) {
+        record[key] = parseNumber(tag[0].textContent);
+      } else {
+        record[key] = "";
+      }
     }
 
     records.push(record);
