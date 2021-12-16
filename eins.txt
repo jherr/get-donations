@@ -1,2 +1,14 @@
 # The list of EINs to process
+#
+# Universities with Schedule H
 590624458 # University of Miami
+231352685 # University of Pennsylvania
+580566256 # Emory
+160743209 # Rochester
+951642394 # USC
+#
+# University Hospitals, separate from parent university
+562070036 # Duke Health
+352528741 # Vanderbilt University Medical Center
+13­3971298 # NYU Hospitals
+364724966 # Northwestern Memorial
