@@ -2,26 +2,16 @@ const fs = require("fs");
 const fetch = require("node-fetch");
 const { DOMParser } = require("xmldom");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
+const yaml = require("js-yaml");
 
-/**
- * Reads all uncommented integers from a text file
- *
- * @param {string} fileName Input file name
- * @returns
- */
-function getValuesFromTextFile(fileName) {
-  const values = [];
-  fs.readFileSync(fileName)
-    .toString()
-    .split("\n")
-    .forEach((line) => {
-      const out = line.match(/^(\d+)/);
-      if (out) {
-        values.push(out[1]);
-      }
-    });
-  return values;
+const DEBUG = false;
+
+if (process.argv.length < 3) {
+  console.log(`Usage: node getScheduleH.js <config.yml>`);
+  process.exit(0);
 }
+
+const config = yaml.load(fs.readFileSync(process.argv[2], "utf8"));
 
 /*
 Valuable metadata resource about the fields:
@@ -65,7 +55,7 @@ const EXTRA_FIELDS_TEXT = {
 };
 const EXTRA_FIELDS = Object.keys(EXTRA_FIELDS_TEXT);
 
-const header = [
+let header = [
   { id: "ein", title: "EIN" },
   { id: "businessName", title: "Business Name" },
   { id: "taxYear", title: "Tax Year" },
@@ -85,8 +75,15 @@ for (const id of EXTRA_FIELDS) {
   header.push({ id, title: EXTRA_FIELDS_TEXT[id] });
 }
 
+if (config.fields) {
+  const regexes = config.fields.map((field) => new RegExp(field));
+  header = header.filter((field) =>
+    regexes.some((regex) => regex.test(field.title))
+  );
+}
+
 const csvWriter = createCsvWriter({
-  path: "report.csv",
+  path: config.output,
   header,
 });
 const records = [];
@@ -130,8 +127,6 @@ const getXMLData = async (ein) => {
   // Create a lookup of year to tax document
   const reportsByYear = {};
 
-  const years = getValuesFromTextFile("./years.txt");
-
   if (!einIndex[ein]) {
     console.log(`Index does not contain EIN ${ein}`);
   }
@@ -162,15 +157,19 @@ const getXMLData = async (ein) => {
     // Store the document by year (overwriting any previous documents for this year)
     if (taxYr[0]) {
       const taxYear = taxYr[0].textContent;
-      if (years.includes(taxYr[0].textContent)) {
+      if (config.years.includes(parseInt(taxYr[0].textContent, 10))) {
         reportsByYear[taxYear] = doc;
       } else {
-        console.log(
-          `Ignoring ${fname} for year ${taxYear} becuse ${taxYear} is not in years.txt`
-        );
+        if (DEBUG) {
+          console.log(
+            `Ignoring ${fname} for year ${taxYear} becuse ${taxYear} is not in years from the configuration`
+          );
+        }
       }
     } else {
-      console.log(`Ignoring ${fname} because of a format change`);
+      if (DEBUG) {
+        console.log(`Ignoring ${fname} because of a format change`);
+      }
     }
   }
 
@@ -252,10 +251,9 @@ async function runReport(ein) {
 
 (async function () {
   // Go throught the eins.txt file and run the report for each EIN
-  const eins = getValuesFromTextFile("./eins.txt");
-  for (const ein of eins) {
+  for (const ein of config.eins) {
     console.log(`Processing ${ein}`);
-    await runReport(parseInt(ein.trim()));
+    await runReport(ein);
   }
 
   // Write out the reports

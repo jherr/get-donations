@@ -24,8 +24,16 @@ npm install
 
 # Execution
 
+To run the 'standard' report:
+
 ```sh
-node getScheduleH.js
+node getScheduleH.js report.yml
+```
+
+To run a more narrowed 'recent-research' report:
+
+```sh
+node getScheduleH.js recent-research.yml
 ```
 
 # Adding EINs 

@@ -1,5 +1,6 @@
 node_modules
-report.*
+report*.csv
+recent*.csv
 indexes/*.json
 .DS_Store
 cache/*
