@@ -1,7 +1,7 @@
 Tax Scraper
 ===========
 
-Simple IRS 990 Schedule H tax scraper.
+Simple IRS 990 Schedule H tax scraper. Source data is from [AWS Opendata](https://registry.opendata.aws/irs990/).
 
 # Prerequisites
 
