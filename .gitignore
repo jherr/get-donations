@@ -3,5 +3,3 @@ report.*
 indexes/*.json
 .DS_Store
 cache/*
-candidates.tsv
-checked.tsv
