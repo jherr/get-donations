@@ -13,7 +13,7 @@ Get the indexes data for 2017-2021. You only need to do this once. The files
 are large.
 
 ```sh
-./get-indexes.sh
+./scripts/get-indexes.sh
 ```
 
 Install the requisite Node modules.
@@ -25,12 +25,16 @@ npm install
 # Execution
 
 ```sh
-node getDonations.js
+node getScheduleH.js
 ```
 
 # Adding EINs 
 
 Add additional EINs to the `eins.txt` file, one per line.
+
+# Managing years
+
+You can add to the years from the `years.txt` file by adding year numbers. Or remove years from the `years.txt` file by removing the year numbers, or by commenting out the line using the `#` comment.
 
 # Of Indexes and Return XML files
 

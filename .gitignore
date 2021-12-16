@@ -1,6 +1,7 @@
 node_modules
 report.*
 indexes/*.json
-cache/index.json
-cache/indexByEIN.json
 .DS_Store
+cache/*
+candidates.tsv
+checked.tsv

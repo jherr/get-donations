@@ -1,16 +1,20 @@
+/*
+This script finds all potential EINs that are comporable to the EINs in the
+eins.txt file.
+*/
 const fs = require("fs");
 const fetch = require("node-fetch");
 const { DOMParser } = require("xmldom");
 
 // Get the 2019, 2020, and 2021 indexes
 const einIndex2019 = JSON.parse(
-  fs.readFileSync("./indexes/index_2019.json").toString()
+  fs.readFileSync("../indexes/index_2019.json").toString()
 ).Filings2019;
 const einIndex2020 = JSON.parse(
-  fs.readFileSync("./indexes/index_2020.json").toString()
+  fs.readFileSync("../indexes/index_2020.json").toString()
 ).Filings2020;
 const einIndex2021 = JSON.parse(
-  fs.readFileSync("./indexes/index_2021.json").toString()
+  fs.readFileSync("../indexes/index_2021.json").toString()
 ).Filings2021;
 
 // Create a lookup from EIN to name
