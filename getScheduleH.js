@@ -132,6 +132,10 @@ const getXMLData = async (ein) => {
 
   const years = getValuesFromTextFile("./years.txt");
 
+  if (!einIndex[ein]) {
+    console.log(`Index does not contain EIN ${ein}`);
+  }
+
   // Use the index to get the URLs for the EIN
   for (const fname of einIndex[ein] ?? []) {
     // Check to see if we have it in the cache already, get it if not

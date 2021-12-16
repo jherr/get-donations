@@ -10,5 +10,5 @@
 # University Hospitals, separate from parent university
 562070036 # Duke Health
 352528741 # Vanderbilt University Medical Center
-13­3971298 # NYU Hospitals
+133971298 # NYU Hospitals
 364724966 # Northwestern Memorial
