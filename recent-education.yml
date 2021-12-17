@@ -1,0 +1,27 @@
+# The list of years to process
+years:
+  # 2013
+  # 2014
+  # 2015
+  # 2016
+  # 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
+
+# EINS to process
+eins:
+  - 590624458 # University of Miami
+  - 231352685 # University of Pennsylvania
+  - 580566256 # Emory
+  - 160743209 # Rochester
+  - 951642394 # USC
+
+fields:
+  - "EIN"
+  - "Business Name"
+  - "Tax Year"
+  - "Education .*"
+
+output: recent-education.csv
