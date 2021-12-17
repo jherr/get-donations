@@ -61,6 +61,7 @@ let header = [
   { id: "taxEndDate", title: "Tax End Date" },
   { id: "returnTimeStamp", title: "Return Timestamp" },
   { id: "totalFunctionalExpenses", title: "990_IX_25_A" },
+  { id: "otherSalaryAndWages", title: "990_IX_7_A" },
 ];
 for (const line of LINES) {
   for (const field of FIELDS) {
@@ -229,6 +230,11 @@ async function runReport(ein) {
     record.totalFunctionalExpenses =
       select("//irs:TotalFunctionalExpensesGrp/irs:TotalAmt", doc)?.[0]
         ?.textContent ?? "";
+
+    record.otherSalaryAndWages = parseNumber(
+      select("//irs:OtherSalariesAndWagesGrp/irs:TotalAmt", doc)?.[0]
+        ?.textContent ?? ""
+    );
 
     // Loop through the lines and fields to grab the data
     for (const line of LINES) {
