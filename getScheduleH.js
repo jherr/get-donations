@@ -1,5 +1,6 @@
 const fs = require("fs");
 const fetch = require("node-fetch");
+const xpath = require("xpath");
 const { DOMParser } = require("xmldom");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const yaml = require("js-yaml");
@@ -99,6 +100,9 @@ const records = [];
 
 const EIN_INDEX_PATH = "./cache/indexByEIN.json";
 
+// Create the xpath selector
+const select = xpath.useNamespaces({ irs: "http://www.irs.gov/efile" });
+
 // Remove the old index if it's there
 if (fs.existsSync("./cache/index.json")) {
   fs.unlinkSync("./cache/index.json");
@@ -161,7 +165,7 @@ const getXMLData = async (ein) => {
     const doc = new DOMParser().parseFromString(xml, "text/xml");
 
     // Get the tax year
-    const taxYr = doc.documentElement.getElementsByTagName("TaxYr");
+    const taxYr = select("//irs:TaxYr", doc);
 
     // Store the document by year (overwriting any previous documents for this year)
     if (taxYr[0]) {
@@ -206,47 +210,38 @@ async function runReport(ein) {
     record.ein = ein;
 
     // Get the business name from the Filer
-    const filer = doc.documentElement.getElementsByTagName("Filer")[0];
     record.businessName =
-      filer.getElementsByTagName("BusinessNameLine1Txt")?.[0]?.textContent ??
-      filer.getElementsByTagName("BusinessNameLine1")?.[0]?.textContent;
+      select("//irs:Filer/irs:BusinessName/irs:BusinessNameLine1Txt", doc)?.[0]
+        ?.textContent ??
+      select("//irs:Filer/irs:BusinessName/irs:BusinessNameLine1")?.[0]
+        ?.textContent;
 
     // Get the tax year
-    record.taxYear =
-      doc.documentElement.getElementsByTagName("TaxYr")[0].textContent;
+    record.taxYear = select("//irs:TaxYr", doc)[0].textContent;
 
     // Get the tax period end date
-    record.taxEndDate =
-      doc.documentElement.getElementsByTagName("TaxPeriodEndDt")[0].textContent;
+    record.taxEndDate = select("//irs:TaxPeriodEndDt", doc)[0].textContent;
 
     // Get the tax period end date
-    record.returnTimeStamp =
-      doc.documentElement.getElementsByTagName("ReturnTs")[0].textContent;
+    record.returnTimeStamp = select("//irs:ReturnTs", doc)[0].textContent;
 
     // Get 990/PartIX/line 25/Col a
-    const elTotalFunctionalExpensesGrp =
-      doc.documentElement.getElementsByTagName("TotalFunctionalExpensesGrp")[0];
-    record.totalFunctionalExpenses = parseNumber(
-      elTotalFunctionalExpensesGrp?.getElementsByTagName("TotalAmt")?.[0]
-        ?.textContent ?? ""
-    );
-
-    // Find the schedule H section
-    const scheduleH =
-      doc.documentElement.getElementsByTagName("IRS990ScheduleH")[0];
+    record.totalFunctionalExpenses =
+      select("//irs:TotalFunctionalExpensesGrp/irs:TotalAmt", doc)?.[0]
+        ?.textContent ?? "";
 
     // Loop through the lines and fields to grab the data
     for (const line of LINES) {
-      const lineItem = scheduleH?.getElementsByTagName?.(line)?.[0];
       for (const field of FIELDS) {
-        const fieldItem = lineItem?.getElementsByTagName?.(field)?.[0];
+        const path = `//irs:IRS990ScheduleH/irs:${line}/irs:${field}`;
+        const fieldItem = select(path, doc)?.[0];
         record[`${line}_${field}`] = parseNumber(fieldItem?.textContent ?? "");
       }
     }
 
     // Get any extra fields from schedule H
     for (const key of EXTRA_FIELDS) {
-      const tag = scheduleH.getElementsByTagName(key);
+      const tag = select(`//irs:IRS990ScheduleH/irs:${key}`, doc);
       if (tag.length > 0) {
         record[key] = parseNumber(tag[0].textContent);
       } else {
