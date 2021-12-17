@@ -22,6 +22,6 @@ fields:
   - "EIN"
   - "Business Name"
   - "Tax Year"
-  - "Research .*"
+  - "SchH:I:7:h:.*"
 
 output: recent-research.csv

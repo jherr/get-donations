@@ -20,38 +20,36 @@ https://github.com/jsfenfen/990-xml-metadata/blob/master/variables.csv
 
 // The lines within schedule H, part I, line 7 that we are interested in
 const LINE_TITLES = {
-  FinancialAssistanceAtCostTyp: "Financial Assistance at Cost",
-  UnreimbursedMedicaidGrp: "Unreimbursed Medicaid",
-  TotalFinancialAssistanceTyp: "Total Financial Assistance",
-  CommunityHealthServicesGrp: "Community Health Services",
-  HealthProfessionsEducationGrp: "Health Professions and Education",
-  SubsidizedHealthServicesGrp: "Subsidized Health Services",
-  ResearchGrp: "Research",
-  CashAndInKindContributionsGrp: "Cash and In-Kind Contributions",
-  TotalOtherBenefitsGrp: "Total Other Benefits",
-  TotalCommunityBenefitsGrp: "Total Community Benefits",
-  CommunitySupportGrp: "Community Support",
-  TotalCommuntityBuildingActyGrp: "Total Community Building Activities",
+  FinancialAssistanceAtCostTyp: "SchH:I:7:a:",
+  UnreimbursedMedicaidGrp: "SchH:I:7:b:",
+  TotalFinancialAssistanceTyp: "SchH:I:7:d:",
+  CommunityHealthServicesGrp: "SchH:I:7:e:",
+  HealthProfessionsEducationGrp: "SchH:I:7:f:",
+  SubsidizedHealthServicesGrp: "SchH:I:7:g:",
+  ResearchGrp: "SchH:I:7:h:",
+  CashAndInKindContributionsGrp: "SchH:I:7:i:",
+  TotalOtherBenefitsGrp: "SchH:I:7:j:",
+  TotalCommunityBenefitsGrp: "SchH:I:7:k:",
 };
 const LINES = Object.keys(LINE_TITLES);
 
 // The fields within each line that we want to extract
 const FIELDS_TITLES = {
-  TotalCommunityBenefitExpnsAmt: "Total Amount",
-  DirectOffsettingRevenueAmt: "Direct Offsetting Revenue",
-  NetCommunityBenefitExpnsAmt: "Net Benefit",
-  TotalExpensePct: "Total Expense Percentage",
+  TotalCommunityBenefitExpnsAmt: "c",
+  DirectOffsettingRevenueAmt: "d",
+  NetCommunityBenefitExpnsAmt: "e",
+  TotalExpensePct: "f",
 };
 const FIELDS = Object.keys(FIELDS_TITLES);
 
 // Any one off tag names within schedule H that we want to extract
 const EXTRA_FIELDS_TEXT = {
-  BadDebtExpenseReportedInd: "Bad Debt Expense Reported",
-  BadDebtExpenseAmt: "Bad Debt Expense Amount",
-  BadDebtExpenseAttributableAmt: "Bad Debt Expense Attributable Amount",
-  ReimbursedByMedicareAmt: "Reimbursed By Medicare Amount",
-  CostOfCareReimbursedByMedcrAmt: "Cost of Care Reimbursed By Medicare Amount",
-  MedicareSurplusOrShortfallAmt: "Medicare Surplus or Shortfall Amount",
+  BadDebtExpenseReportedInd: "SchH:III:1",
+  BadDebtExpenseAmt: "SchH:III:2",
+  BadDebtExpenseAttributableAmt: "SchH:III:3",
+  ReimbursedByMedicareAmt: "SchH:III:5",
+  CostOfCareReimbursedByMedcrAmt: "SchH:III:6",
+  MedicareSurplusOrShortfallAmt: "SchH:III:7",
 };
 const EXTRA_FIELDS = Object.keys(EXTRA_FIELDS_TEXT);
 
@@ -61,13 +59,13 @@ let header = [
   { id: "taxYear", title: "Tax Year" },
   { id: "taxEndDate", title: "Tax End Date" },
   { id: "returnTimeStamp", title: "Return Timestamp" },
-  { id: "totalFunctionalExpenses", title: "Total Functional Expenses" },
+  { id: "totalFunctionalExpenses", title: "990:IX:25:A" },
 ];
 for (const line of LINES) {
   for (const field of FIELDS) {
     header.push({
       id: `${line}_${field}`,
-      title: `${LINE_TITLES[line]} ${FIELDS_TITLES[field]}`,
+      title: `${LINE_TITLES[line]}${FIELDS_TITLES[field]}`,
     });
   }
 }
