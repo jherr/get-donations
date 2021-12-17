@@ -20,16 +20,16 @@ https://github.com/jsfenfen/990-xml-metadata/blob/master/variables.csv
 
 // The lines within schedule H, part I, line 7 that we are interested in
 const LINE_TITLES = {
-  FinancialAssistanceAtCostTyp: "SchH:I:7:a:",
-  UnreimbursedMedicaidGrp: "SchH:I:7:b:",
-  TotalFinancialAssistanceTyp: "SchH:I:7:d:",
-  CommunityHealthServicesGrp: "SchH:I:7:e:",
-  HealthProfessionsEducationGrp: "SchH:I:7:f:",
-  SubsidizedHealthServicesGrp: "SchH:I:7:g:",
-  ResearchGrp: "SchH:I:7:h:",
-  CashAndInKindContributionsGrp: "SchH:I:7:i:",
-  TotalOtherBenefitsGrp: "SchH:I:7:j:",
-  TotalCommunityBenefitsGrp: "SchH:I:7:k:",
+  FinancialAssistanceAtCostTyp: "SchH_I_7_a_",
+  UnreimbursedMedicaidGrp: "SchH_I_7_b_",
+  TotalFinancialAssistanceTyp: "SchH_I_7_d_",
+  CommunityHealthServicesGrp: "SchH_I_7_e_",
+  HealthProfessionsEducationGrp: "SchH_I_7_f_",
+  SubsidizedHealthServicesGrp: "SchH_I_7_g_",
+  ResearchGrp: "SchH_I_7_h_",
+  CashAndInKindContributionsGrp: "SchH_I_7_i_",
+  TotalOtherBenefitsGrp: "SchH_I_7_j_",
+  TotalCommunityBenefitsGrp: "SchH_I_7_k_",
 };
 const LINES = Object.keys(LINE_TITLES);
 
@@ -44,12 +44,12 @@ const FIELDS = Object.keys(FIELDS_TITLES);
 
 // Any one off tag names within schedule H that we want to extract
 const EXTRA_FIELDS_TEXT = {
-  BadDebtExpenseReportedInd: "SchH:III:1",
-  BadDebtExpenseAmt: "SchH:III:2",
-  BadDebtExpenseAttributableAmt: "SchH:III:3",
-  ReimbursedByMedicareAmt: "SchH:III:5",
-  CostOfCareReimbursedByMedcrAmt: "SchH:III:6",
-  MedicareSurplusOrShortfallAmt: "SchH:III:7",
+  BadDebtExpenseReportedInd: "SchH_III_1",
+  BadDebtExpenseAmt: "SchH_III_2",
+  BadDebtExpenseAttributableAmt: "SchH_III_3",
+  ReimbursedByMedicareAmt: "SchH_III_5",
+  CostOfCareReimbursedByMedcrAmt: "SchH_III_6",
+  MedicareSurplusOrShortfallAmt: "SchH_III_7",
 };
 const EXTRA_FIELDS = Object.keys(EXTRA_FIELDS_TEXT);
 
@@ -59,7 +59,7 @@ let header = [
   { id: "taxYear", title: "Tax Year" },
   { id: "taxEndDate", title: "Tax End Date" },
   { id: "returnTimeStamp", title: "Return Timestamp" },
-  { id: "totalFunctionalExpenses", title: "990:IX:25:A" },
+  { id: "totalFunctionalExpenses", title: "990_IX_25_A" },
 ];
 for (const line of LINES) {
   for (const field of FIELDS) {
