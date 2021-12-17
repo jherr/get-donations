@@ -24,4 +24,4 @@ eins:
   - 133971298 # NYU Hospitals
   - 364724966 # Northwestern Memorial
 
-output: report.csv
+output: "report_{minYear}_{maxYear}_{einCount}.csv"

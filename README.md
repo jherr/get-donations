@@ -74,3 +74,25 @@ These files are listed in the indexes, which are created by `get-indexes.sh` and
 | index_2021.json | 202131029349301403_public.xml | 2019 |
 
 All of these files are cached on disk strictly for performance reasons.
+
+# Output name formatting
+
+In the configuration files you can set the name of the output file and add the following optional parameters:
+
+| Field | Description |
+| ------ | ----------- |
+| einCount | The number of EINs in the report. |
+| minYear | The minimum year in the report. |
+| maxYear | The maximum year in the report. |
+
+Example:
+
+```yaml
+output: "report_{minYear}_{maxYear}_{einCount}.csv"
+```
+
+Outputs:
+
+```
+report_2012_2014_1.csv
+```

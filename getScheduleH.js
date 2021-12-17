@@ -80,8 +80,19 @@ if (config.fields) {
   );
 }
 
+const replacementValues = {
+  minYear: Math.min(...config.years),
+  maxYear: Math.max(...config.years),
+  einCount: config.eins.length,
+};
+
+const path = config.output.replace(
+  /(\{[^}]*\})/g,
+  (_, p1) => replacementValues[p1.replace(/[{}]/g, "")]
+);
+
 const csvWriter = createCsvWriter({
-  path: config.output,
+  path,
   header,
 });
 const records = [];
