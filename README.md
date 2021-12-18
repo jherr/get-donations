@@ -36,15 +36,21 @@ To run a more narrowed 'recent-research' report:
 node getScheduleH.js recent-research.yml
 ```
 
-# Adding EINs 
+# Running tests
 
-Add additional EINs to the `eins.txt` file, one per line.
+Run the tests to validate the business logic using this command:
 
-# Managing years
+```sh
+yarn test
+```
 
-You can add to the years from the `years.txt` file by adding year numbers. Or remove years from the `years.txt` file by removing the year numbers, or by commenting out the line using the `#` comment.
+To update the snapshot data after you have added fields (and validated that the output is correct), run this command:
 
-# Of Indexes and Return XML files
+```sh
+yarn test -u
+```
+
+# Indexes and Return XML files
 
 The files listed below are the output of the `getDonations` code after the program is run with the University of Miami EIN and stored in the `cache` directory. These are exact copies of the files that are downloaded from the S3 and referenced in the indexes (described below). 
 
@@ -75,7 +81,16 @@ These files are listed in the indexes, which are created by `get-indexes.sh` and
 
 All of these files are cached on disk strictly for performance reasons.
 
-# Output name formatting
+# Report configuration files
+
+The system is configured by a YAML file. Which contains the following fields:
+
+| Field | Description |
+| ----- | ----------- |
+| years | An array of years to process. |
+| eins | An array of EINs to process. |
+| output | The output file name. |
+| fields | The fields to include in the output. (If not specified all are returned.) |
 
 In the configuration files you can set the name of the output file and add the following optional parameters:
 
