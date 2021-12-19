@@ -51,7 +51,8 @@ const IGNORE = [
 
   // Iterate through all the EINs
   const records = [];
-  const csvFiles = {};
+  const csvByEIN = {};
+  const csvByYear = {};
   for (const einIndex in config.eins) {
     const ein = config.eins[einIndex];
 
@@ -64,14 +65,22 @@ const IGNORE = [
       records.push(out);
 
       for (field of Object.keys(out).filter((k) => !IGNORE.includes(k))) {
-        if (!csvFiles[field]) {
-          csvFiles[field] = config.eins.map((currentEIN) => ({
+        if (!csvByEIN[field]) {
+          csvByEIN[field] = config.eins.map((currentEIN) => ({
             ein: currentEIN,
             businessName: "",
           }));
         }
-        csvFiles[field][einIndex].businessName = out.businessName;
-        csvFiles[field][einIndex][year] = out[field];
+        csvByEIN[field][einIndex].businessName = out.businessName;
+        csvByEIN[field][einIndex][year] = out[field];
+
+        if (!csvByYear[field]) {
+          csvByYear[field] = config.years.map((year) => ({
+            year,
+          }));
+        }
+        const yearIndex = config.years.indexOf(parseInt(year));
+        csvByYear[field][yearIndex][ein] = out[field];
       }
     }
   }
@@ -84,20 +93,32 @@ const IGNORE = [
       fs.mkdirSync(config.csvDirectory);
     }
 
-    const fieldHeader = [
+    const einFields = [
       { id: "ein", title: "EIN" },
       { id: "businessName", title: "Business Name" },
     ];
     for (const year of config.years) {
-      fieldHeader.push({ id: year, title: year });
+      einFields.push({ id: year, title: year });
     }
 
-    for (const field in csvFiles) {
+    for (const field in csvByEIN) {
       const fieldWriter = createCsvWriter({
-        path: `${config.csvDirectory}/${field}.csv`,
-        header: fieldHeader,
+        path: `${config.csvDirectory}/${field}_byYear.csv`,
+        header: einFields,
       });
-      fieldWriter.writeRecords(csvFiles[field]);
+      fieldWriter.writeRecords(csvByEIN[field]);
+    }
+
+    const yearFields = [{ id: "year", title: "Year" }];
+    for (const ein of config.eins) {
+      yearFields.push({ id: ein, title: ein });
+    }
+    for (const field in csvByYear) {
+      const fieldWriter = createCsvWriter({
+        path: `${config.csvDirectory}/${field}_byEIN.csv`,
+        header: yearFields,
+      });
+      fieldWriter.writeRecords(csvByYear[field]);
     }
   }
 })();
