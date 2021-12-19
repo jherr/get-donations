@@ -25,3 +25,5 @@ eins:
   - 364724966 # Northwestern Memorial
 
 output: "report_{minYear}_{maxYear}_{einCount}.csv"
+
+csvDirectory: "report-csv"

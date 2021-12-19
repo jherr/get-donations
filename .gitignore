@@ -5,3 +5,4 @@ indexes/*.json
 .DS_Store
 cache/*
 yarn.lock
+report-csv

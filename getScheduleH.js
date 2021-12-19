@@ -5,6 +5,14 @@ const yaml = require("js-yaml");
 const { getFields, extractFields } = require("./lib/extractFields");
 const getXMLData = require("./lib/getXMLData");
 
+const IGNORE = [
+  "businessName",
+  "ein",
+  "returnTimeStamp",
+  "taxEndDate",
+  "taxYear",
+];
+
 (async function () {
   // Make sure we have a valid command line
   if (process.argv.length < 3) {
@@ -43,16 +51,53 @@ const getXMLData = require("./lib/getXMLData");
 
   // Iterate through all the EINs
   const records = [];
-  for (const ein of config.eins) {
+  const csvFiles = {};
+  for (const einIndex in config.eins) {
+    const ein = config.eins[einIndex];
+
     console.log(`Processing ${ein}`);
 
     const xmlReports = await getXMLData(ein, config.years);
 
     for (const year in xmlReports) {
-      records.push(extractFields(xmlReports[year]));
+      const out = extractFields(xmlReports[year]);
+      records.push(out);
+
+      for (field of Object.keys(out).filter((k) => !IGNORE.includes(k))) {
+        if (!csvFiles[field]) {
+          csvFiles[field] = config.eins.map((currentEIN) => ({
+            ein: currentEIN,
+            businessName: "",
+          }));
+        }
+        csvFiles[field][einIndex].businessName = out.businessName;
+        csvFiles[field][einIndex][year] = out[field];
+      }
     }
   }
 
   // Write out the report
   await csvWriter.writeRecords(records);
+
+  if (config.csvDirectory) {
+    if (!fs.existsSync(config.csvDirectory)) {
+      fs.mkdirSync(config.csvDirectory);
+    }
+
+    const fieldHeader = [
+      { id: "ein", title: "EIN" },
+      { id: "businessName", title: "Business Name" },
+    ];
+    for (const year of config.years) {
+      fieldHeader.push({ id: year, title: year });
+    }
+
+    for (const field in csvFiles) {
+      const fieldWriter = createCsvWriter({
+        path: `${config.csvDirectory}/${field}.csv`,
+        header: fieldHeader,
+      });
+      fieldWriter.writeRecords(csvFiles[field]);
+    }
+  }
 })();
