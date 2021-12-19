@@ -93,13 +93,12 @@ const IGNORE = [
       fs.mkdirSync(config.csvDirectory);
     }
 
-    const einFields = [
-      { id: "ein", title: "EIN" },
-      { id: "businessName", title: "Business Name" },
-    ];
+    const einFields = [];
     for (const year of config.years) {
       einFields.push({ id: year, title: year });
     }
+    einFields.push({ id: "ein", title: "EIN" });
+    einFields.push({ id: "businessName", title: "Business Name" });
 
     for (const field in csvByEIN) {
       const fieldWriter = createCsvWriter({
@@ -109,10 +108,11 @@ const IGNORE = [
       fieldWriter.writeRecords(csvByEIN[field]);
     }
 
-    const yearFields = [{ id: "year", title: "Year" }];
+    const yearFields = [];
     for (const ein of config.eins) {
       yearFields.push({ id: ein, title: ein });
     }
+    yearFields.push({ id: "year", title: "Year" });
     for (const field in csvByYear) {
       const fieldWriter = createCsvWriter({
         path: `${config.csvDirectory}/${field}_byEIN.csv`,
