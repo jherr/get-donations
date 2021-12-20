@@ -11,18 +11,16 @@ years:
   - 2021
 
 # EINS to process
-eins:
-  - 590624458 # University of Miami
-  - 231352685 # University of Pennsylvania
-  - 580566256 # Emory
-  - 160743209 # Rochester
-  - 951642394 # USC
-  #
-  # University Hospitals, separate from parent university
-  - 562070036 # Duke Health
-  - 352528741 # Vanderbilt University Medical Center
-  - 133971298 # NYU Hospitals
-  - 364724966 # Northwestern Memorial
+einsWithNames:
+  590624458: "UofM"
+  231352685: "Penn"
+  580566256: "Emory"
+  160743209: "Rochester"
+  951642394: "USC"
+  562070036: "Duke"
+  352528741: "Vanderbilt"
+  133971298: "NYU"
+  364724966: "Northwestern"
 
 output: "report_{minYear}_{maxYear}_{einCount}.csv"
 

@@ -23,6 +23,14 @@ const IGNORE = [
   // Read the report configuration file
   const config = yaml.load(fs.readFileSync(process.argv[2], "utf8"));
 
+  // Get the list of EINs to process and the names of the businesses if specified
+  const businessNames = {
+    ...(config.einsWithNames ?? {}),
+  };
+  const einsToProcess = Array.from(
+    new Set([...(config.eins ?? []), ...Object.keys(businessNames)])
+  );
+
   // Get the header fields and trim them if the report configuration specifies fields
   let header = getFields();
   if (config.fields) {
@@ -36,7 +44,7 @@ const IGNORE = [
   const replacementValues = {
     minYear: Math.min(...config.years),
     maxYear: Math.max(...config.years),
-    einCount: config.eins.length,
+    einCount: einsToProcess.length,
   };
   const path = config.output.replace(
     /(\{[^}]*\})/g,
@@ -53,8 +61,8 @@ const IGNORE = [
   const records = [];
   const csvByEIN = {};
   const csvByYear = {};
-  for (const einIndex in config.eins) {
-    const ein = config.eins[einIndex];
+  for (const einIndex in einsToProcess) {
+    const ein = einsToProcess[einIndex];
 
     console.log(`Processing ${ein}`);
 
@@ -62,16 +70,22 @@ const IGNORE = [
 
     for (const year in xmlReports) {
       const out = extractFields(xmlReports[year]);
+
+      if (!businessNames[ein]) {
+        businessNames[ein] = out.businessName;
+      }
+      out.businessName = businessNames[ein] ?? out.businessName;
+
       records.push(out);
 
       for (field of Object.keys(out).filter((k) => !IGNORE.includes(k))) {
         if (!csvByEIN[field]) {
-          csvByEIN[field] = config.eins.map((currentEIN) => ({
+          csvByEIN[field] = einsToProcess.map((currentEIN) => ({
             ein: currentEIN,
             businessName: "",
           }));
         }
-        csvByEIN[field][einIndex].businessName = out.businessName;
+        csvByEIN[field][einIndex].businessName = businessNames[ein];
         csvByEIN[field][einIndex][year] = out[field];
 
         if (!csvByYear[field]) {
@@ -93,14 +107,14 @@ const IGNORE = [
       fs.mkdirSync(config.csvDirectory);
     }
 
-    const einFields = [];
-    for (const year of config.years) {
-      einFields.push({ id: year, title: year });
-    }
-    einFields.push({ id: "ein", title: "EIN" });
-    einFields.push({ id: "businessName", title: "Business Name" });
-
     for (const field in csvByEIN) {
+      const einFields = [];
+      for (const year of config.years) {
+        einFields.push({ id: year, title: `${field}_${year}` });
+      }
+      einFields.push({ id: "ein", title: "EIN" });
+      einFields.push({ id: "businessName", title: "Business Name" });
+
       const fieldWriter = createCsvWriter({
         path: `${config.csvDirectory}/${field}_byYear.csv`,
         header: einFields,
@@ -109,8 +123,8 @@ const IGNORE = [
     }
 
     const yearFields = [];
-    for (const ein of config.eins) {
-      yearFields.push({ id: ein, title: ein });
+    for (const ein of einsToProcess) {
+      yearFields.push({ id: ein, title: businessNames[ein] });
     }
     yearFields.push({ id: "year", title: "Year" });
     for (const field in csvByYear) {

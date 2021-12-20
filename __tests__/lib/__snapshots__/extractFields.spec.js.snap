@@ -2,8 +2,8 @@
 
 exports[`extractFields should extract the values we expect 1`] = `
 Object {
-  "990_IX_25_A": 6978995000,
-  "990_IX_7_A": 3029877958,
+  "Sch990_IX_25_A": 6978995000,
+  "Sch990_IX_7_A": 3029877958,
   "SchH_III_2": 75526511,
   "SchH_III_3": 27994066,
   "SchH_III_5": 617952755,
