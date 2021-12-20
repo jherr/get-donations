@@ -52,7 +52,9 @@ Object {
   "businessName": "TRUSTEES OF THE UNIVERSITY OF PENNSYLVANIA",
   "ein": "231352685",
   "returnTimeStamp": "2020-07-10T15:52:51-05:00",
+  "state": "PA",
   "taxEndDate": "2019-06-30",
   "taxYear": 2018,
+  "zipCode": "19104",
 }
 `;
