@@ -9,25 +9,39 @@ const {
 } = require("../../lib/extractFields");
 
 describe("extractFields", () => {
-  let doc = null;
+  let penn2018 = null;
+  let northwestern2018 = null;
 
   beforeAll(() => {
-    const xmlText = fs.readFileSync(
-      path.resolve(__dirname, "./__fixtures__/penn-2018.xml"),
-      "utf8"
+    penn2018 = new DOMParser().parseFromString(
+      fs.readFileSync(
+        path.resolve(__dirname, "./__fixtures__/penn-2018.xml"),
+        "utf8"
+      ),
+      "text/xml"
     );
-    doc = new DOMParser().parseFromString(xmlText, "text/xml");
+    northwestern2018 = new DOMParser().parseFromString(
+      fs.readFileSync(
+        path.resolve(__dirname, "./__fixtures__/northwestern-2018.xml"),
+        "utf8"
+      ),
+      "text/xml"
+    );
   });
 
   it("should extract the right tax year", () => {
-    expect(getTaxYear(doc)).toBe(2018);
+    expect(getTaxYear(penn2018)).toBe(2018);
   });
 
   it("should say that the XML file is valid", () => {
-    expect(isValidFormat(doc)).toBe(true);
+    expect(isValidFormat(penn2018)).toBe(true);
   });
 
-  it("should extract the values we expect", () => {
-    expect(extractFields(doc)).toMatchSnapshot();
+  it("penn-2018", () => {
+    expect(extractFields(penn2018)).toMatchSnapshot();
+  });
+
+  it("northwestern-2018", () => {
+    expect(extractFields(northwestern2018)).toMatchSnapshot();
   });
 });
