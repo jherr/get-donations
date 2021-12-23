@@ -50,6 +50,11 @@
     "totalFunctionalExpenses": 563141090,
     "name": "JAMAICA HOSPITAL MEDICAL CENTER"
   },
+  "111631796": {
+    "EIN": "111631796",
+    "totalFunctionalExpenses": 811556125,
+    "name": "NEWYORK-PRESBYTERIANBROOKLYN"
+  },
   "111631837": {
     "EIN": "111631837",
     "totalFunctionalExpenses": 344186693,
@@ -121,6 +126,11 @@
   "111805341": null,
   "111824299": null,
   "111839302": null,
+  "111839362": {
+    "EIN": "111839362",
+    "totalFunctionalExpenses": 787955857,
+    "name": "NEWYORK-PRESBYTERIANQUEENS"
+  },
   "111858098": null,
   "111867905": null,
   "111871039": {
@@ -248,6 +258,11 @@
   "112833587": null,
   "112833588": null,
   "112833590": null,
+  "112837244": {
+    "EIN": "112837244",
+    "totalFunctionalExpenses": 134545317,
+    "name": "THE LONG ISLAND HOME"
+  },
   "112843882": null,
   "112845058": null,
   "112868878": {
@@ -317,6 +332,11 @@
   "113423295": null,
   "113434265": null,
   "113437602": null,
+  "113438973": {
+    "EIN": "113438973",
+    "totalFunctionalExpenses": 126744715,
+    "name": "WSNCHS NORTH INC"
+  },
   "113440088": null,
   "113443720": null,
   "113453739": null,
@@ -397,6 +417,11 @@
   },
   "131624107": null,
   "131624123": null,
+  "131624135": {
+    "EIN": "131624135",
+    "totalFunctionalExpenses": 1110951590,
+    "name": "NEW YORK SOCIETY FOR THE RELIEF OF THE"
+  },
   "131624158": {
     "EIN": "131624158",
     "totalFunctionalExpenses": 582124924,
@@ -849,6 +874,11 @@
   "134269601": null,
   "134288670": null,
   "134308061": null,
+  "134343743": {
+    "EIN": "134343743",
+    "totalFunctionalExpenses": 26094197,
+    "name": "CRAIG AND FRANCES LINDNER CENTER OF HOPE"
+  },
   "134349419": null,
   "134356799": null,
   "134363148": null,
@@ -857,6 +887,11 @@
   "135548780": null,
   "135557534": null,
   "135562167": null,
+  "135562304": {
+    "EIN": "135562304",
+    "totalFunctionalExpenses": 145103029,
+    "name": "New York Eye & Ear Infirmary"
+  },
   "135562308": null,
   "135562314": null,
   "135562374": null,
@@ -958,6 +993,11 @@
   "137379593": null,
   "141338346": null,
   "141338371": null,
+  "141338373": {
+    "EIN": "141338373",
+    "totalFunctionalExpenses": 161853765,
+    "name": "The Columbia Memorial Hospital"
+  },
   "141338386": {
     "EIN": "141338386",
     "totalFunctionalExpenses": 58422943,
@@ -1424,6 +1464,11 @@
     "totalFunctionalExpenses": 4007593282,
     "name": "UNIVERSITY OF ROCHESTER"
   },
+  "160743226": {
+    "EIN": "160743226",
+    "totalFunctionalExpenses": 101807571,
+    "name": "UPMC CHAUTAUQUA AT WCA"
+  },
   "160743301": {
     "EIN": "160743301",
     "totalFunctionalExpenses": 75037664,
@@ -1446,6 +1491,11 @@
     "name": "BERTRAND CHAFFEE HOSPITAL"
   },
   "160743942": null,
+  "160743966": {
+    "EIN": "160743966",
+    "totalFunctionalExpenses": 64148192,
+    "name": "CLIFTON SPRINGS SANITARIUM CO"
+  },
   "160743979": {
     "EIN": "160743979",
     "totalFunctionalExpenses": 59517721,
@@ -2005,6 +2055,11 @@
   "201631325": null,
   "201632384": null,
   "201639112": null,
+  "201645949": {
+    "EIN": "201645949",
+    "totalFunctionalExpenses": 111323936,
+    "name": "CFHS HOLDINGS INC"
+  },
   "201646631": null,
   "201649466": {
     "EIN": "201649466",
@@ -2313,6 +2368,11 @@
   "204419606": null,
   "204426753": null,
   "204474372": null,
+  "204474637": {
+    "EIN": "204474637",
+    "totalFunctionalExpenses": 18602898,
+    "name": "JANE TODD CRAWFORD MEMORIAL HOSP"
+  },
   "204477065": null,
   "204499806": null,
   "204509120": null,
@@ -2389,6 +2449,11 @@
   "205101980": null,
   "205107997": null,
   "205121672": null,
+  "205126945": {
+    "EIN": "205126945",
+    "totalFunctionalExpenses": 118349386,
+    "name": "BMH INC"
+  },
   "205130170": null,
   "205134078": null,
   "205150062": null,
@@ -2526,6 +2591,11 @@
   "208217424": null,
   "208226797": null,
   "208280364": null,
+  "208295721": {
+    "EIN": "208295721",
+    "totalFunctionalExpenses": 13309997629,
+    "name": "UPMC GROUP"
+  },
   "208295948": null,
   "208305684": null,
   "208314979": null,
@@ -2643,6 +2713,11 @@
     "name": "Robert Wood Johnson University Hospital at"
   },
   "210634584": null,
+  "210634964": {
+    "EIN": "210634964",
+    "totalFunctionalExpenses": 52224691,
+    "name": "BACHARACH INSTITUTE FOR REHABILITATION"
+  },
   "210634981": null,
   "210635001": {
     "EIN": "210635001",
@@ -2789,6 +2864,11 @@
   "221636709": null,
   "221644966": null,
   "221661978": null,
+  "221714106": {
+    "EIN": "221714106",
+    "totalFunctionalExpenses": 78689376,
+    "name": "CARRIER CLINIC INC"
+  },
   "221726712": null,
   "221736045": null,
   "221736531": null,
@@ -2984,6 +3064,7 @@
     "totalFunctionalExpenses": 60109542,
     "name": "Baystate Noble Hospital Corporation"
   },
+  "222541478": null,
   "222544673": null,
   "222546051": null,
   "222546080": null,
@@ -3247,6 +3328,11 @@
   "223209406": null,
   "223219824": null,
   "223225707": null,
+  "223227943": {
+    "EIN": "223227943",
+    "totalFunctionalExpenses": 58201703,
+    "name": "MORRIS HALL - ST LAWRENCE INC"
+  },
   "223232914": null,
   "223234975": null,
   "223235671": null,
@@ -3255,6 +3341,11 @@
   "223260998": null,
   "223265213": null,
   "223269184": null,
+  "223274755": {
+    "EIN": "223274755",
+    "totalFunctionalExpenses": 16888379,
+    "name": "SHORE REHABILITATION INSTITUTE INC"
+  },
   "223284523": null,
   "223284789": null,
   "223291284": null,
@@ -3368,6 +3459,11 @@
   "226014689": null,
   "226017209": null,
   "226017975": null,
+  "226019101": {
+    "EIN": "226019101",
+    "totalFunctionalExpenses": 512700603,
+    "name": "THE COMMUNITY HOSPITAL GROUP INC"
+  },
   "226032181": null,
   "226056007": null,
   "226059984": null,
@@ -3559,6 +3655,11 @@
   "231352698": null,
   "231353385": null,
   "231355135": null,
+  "231360851": {
+    "EIN": "231360851",
+    "totalFunctionalExpenses": 157641897,
+    "name": "UPMC PINNACLE HANOVER"
+  },
   "231360854": {
     "EIN": "231360854",
     "totalFunctionalExpenses": 73265196,
@@ -3594,6 +3695,11 @@
   },
   "231382408": null,
   "231386178": null,
+  "231390618": {
+    "EIN": "231390618",
+    "totalFunctionalExpenses": 473013176,
+    "name": "The Devereux Foundation"
+  },
   "231392600": null,
   "231396763": null,
   "231397526": null,
@@ -3649,6 +3755,16 @@
     "name": "HOLY REDEEMER HEALTH SYSTEM"
   },
   "231548819": null,
+  "231548822": {
+    "EIN": "231548822",
+    "totalFunctionalExpenses": 88208922,
+    "name": "PHILHAVEN"
+  },
+  "231550955": {
+    "EIN": "231550955",
+    "totalFunctionalExpenses": 185060356,
+    "name": "DEBORAH HEART AND LUNG CENTER"
+  },
   "231570227": null,
   "231571789": null,
   "231574984": null,
@@ -3690,6 +3806,11 @@
   "231874001": null,
   "231876142": null,
   "231889724": null,
+  "231894907": {
+    "EIN": "231894907",
+    "totalFunctionalExpenses": 16380537,
+    "name": "MONTGOMERY COUNTY EMERGENCY SERVICE INC"
+  },
   "231899873": null,
   "231900450": null,
   "231904725": null,
@@ -3796,6 +3917,11 @@
   "232256893": null,
   "232257958": null,
   "232258631": null,
+  "232262852": {
+    "EIN": "232262852",
+    "totalFunctionalExpenses": 33862515,
+    "name": "JOHN HEINZ INSTITUTE OF REHABILITATION"
+  },
   "232266054": null,
   "232267407": null,
   "232273163": null,
@@ -3846,6 +3972,11 @@
   "232490021": null,
   "232516451": null,
   "232522548": null,
+  "232523395": {
+    "EIN": "232523395",
+    "totalFunctionalExpenses": 39029084,
+    "name": "ALLIED SERVICES INSTITUTE OF"
+  },
   "232530237": null,
   "232560952": null,
   "232567468": null,
@@ -3961,6 +4092,11 @@
   "232922409": null,
   "232930242": null,
   "232934943": null,
+  "232935278": {
+    "EIN": "232935278",
+    "totalFunctionalExpenses": 47673727,
+    "name": "CHILDRENS INSTITUTE OF PITTSBURGH"
+  },
   "232935890": null,
   "232937749": null,
   "232941451": null,
@@ -4067,6 +4203,11 @@
   "237010017": null,
   "237010355": null,
   "237010468": null,
+  "237010520": {
+    "EIN": "237010520",
+    "totalFunctionalExpenses": 35309876,
+    "name": "MARY BIRD PERKINS CANCER CENTER"
+  },
   "237010680": null,
   "237011835": null,
   "237013258": null,
@@ -5056,6 +5197,7 @@
   },
   "246000316": null,
   "246021385": null,
+  "250461835": null,
   "250496976": null,
   "250523075": null,
   "250585280": {
@@ -5088,11 +5230,21 @@
     "totalFunctionalExpenses": 286729834,
     "name": "BUTLER HEALTHCARE PROVIDERS"
   },
+  "250965292": {
+    "EIN": "250965292",
+    "totalFunctionalExpenses": 16267651,
+    "name": "THE CHILDREN'S HOME OF PITTSBURGH"
+  },
   "250965376": null,
   "250965404": {
     "EIN": "250965404",
     "totalFunctionalExpenses": 164649135,
     "name": "INDIANA REGIONAL MEDICAL CENTER"
+  },
+  "250965406": {
+    "EIN": "250965406",
+    "totalFunctionalExpenses": 114775039,
+    "name": "UPMC JAMESON"
   },
   "250965408": null,
   "250965430": null,
@@ -5157,6 +5309,11 @@
     "name": "CORRY MEMORIAL HOSPITAL ASSOCIATION"
   },
   "250996070": null,
+  "251002937": {
+    "EIN": "251002937",
+    "totalFunctionalExpenses": 60266417,
+    "name": "MILLCREEK COMMUNITY HOSPTIAL"
+  },
   "251002946": null,
   "251010039": {
     "EIN": "251010039",
@@ -5470,6 +5627,11 @@
   "260331335": null,
   "260333211": null,
   "260335357": null,
+  "260335902": {
+    "EIN": "260335902",
+    "totalFunctionalExpenses": 0,
+    "name": "St Lukes Community Development Corporation The Woodlands"
+  },
   "260337511": null,
   "260378710": null,
   "260380696": null,
@@ -5628,6 +5790,11 @@
   "261648298": null,
   "261672457": null,
   "261692583": null,
+  "261699000": {
+    "EIN": "261699000",
+    "totalFunctionalExpenses": 38021885,
+    "name": "PENNSYLVANIA PSYCHIATRIC INSTITUTE"
+  },
   "261705419": null,
   "261706394": null,
   "261720984": {
@@ -5666,6 +5833,11 @@
     "EIN": "261938641",
     "totalFunctionalExpenses": 31802510,
     "name": "NORTH CANYON MEDICAL CENTER INC"
+  },
+  "261947374": {
+    "EIN": "261947374",
+    "totalFunctionalExpenses": 96488410,
+    "name": "St Lukes Community Development Corporation Sugar Land"
   },
   "261972987": {
     "EIN": "261972987",
@@ -6238,6 +6410,11 @@
   "271707117": null,
   "271712188": null,
   "271753984": null,
+  "271757642": {
+    "EIN": "271757642",
+    "totalFunctionalExpenses": 21805062,
+    "name": "KEMPER CAH INC"
+  },
   "271763901": null,
   "271766995": null,
   "271770033": null,
@@ -6307,6 +6484,11 @@
   "272219420": null,
   "272232797": null,
   "272298829": null,
+  "272305304": {
+    "EIN": "272305304",
+    "totalFunctionalExpenses": 188815022,
+    "name": "SWEDISH EDMONDS"
+  },
   "272314726": null,
   "272341083": null,
   "272344723": null,
@@ -6413,6 +6595,11 @@
   "273266672": null,
   "273282543": null,
   "273298736": null,
+  "273311774": {
+    "EIN": "273311774",
+    "totalFunctionalExpenses": 37724162,
+    "name": "St Luke's McCall Ltd"
+  },
   "273319849": null,
   "273321328": null,
   "273326766": null,
@@ -6460,6 +6647,11 @@
   "273664986": null,
   "273672239": null,
   "273695360": null,
+  "273733278": {
+    "EIN": "273733278",
+    "totalFunctionalExpenses": 0,
+    "name": "St Lukes Community Development Corporation - PMC"
+  },
   "273742357": null,
   "273764078": null,
   "273769602": null,
@@ -7413,6 +7605,11 @@
   "320084051": null,
   "320086739": null,
   "320087353": null,
+  "320090450": {
+    "EIN": "320090450",
+    "totalFunctionalExpenses": 8417217,
+    "name": "SOUTHERN CRESCENT HOSPITAL FOR SPECIALTY"
+  },
   "320092119": null,
   "320095119": null,
   "320103234": null,
@@ -7682,10 +7879,20 @@
   },
   "340714485": null,
   "340714504": null,
+  "340714581": {
+    "EIN": "340714581",
+    "totalFunctionalExpenses": 103726487,
+    "name": "ALLIANCE COMMUNITY HOSPITAL"
+  },
   "340714583": {
     "EIN": "340714583",
     "totalFunctionalExpenses": 69813451,
     "name": "CITY HOSPITAL ASSOCIATION"
+  },
+  "340714585": {
+    "EIN": "340714585",
+    "totalFunctionalExpenses": 5582278577,
+    "name": "THE CLEVELAND CLINIC FOUNDATION"
   },
   "340714626": null,
   "340714629": null,
@@ -7927,6 +8134,11 @@
     "EIN": "341883132",
     "totalFunctionalExpenses": 82243327,
     "name": "BAY PARK COMMUNITY HOSPITAL"
+  },
+  "341883284": {
+    "EIN": "341883284",
+    "totalFunctionalExpenses": 184745906,
+    "name": "LIMA MEMORIAL JOINT OPERATING COMPANY"
   },
   "341884022": null,
   "341887844": null,
@@ -8198,7 +8410,17 @@
     "totalFunctionalExpenses": 406520221,
     "name": "REID HOSPITAL & HEALTH CARE SERVICES INC"
   },
+  "350895832": {
+    "EIN": "350895832",
+    "totalFunctionalExpenses": 124082967,
+    "name": "THE BETHANY CIRCLE OF KING'S DAUGHTERS'"
+  },
   "350896905": null,
+  "350900741": {
+    "EIN": "350900741",
+    "totalFunctionalExpenses": 49356141,
+    "name": "Fayette Memorial Hospital Association"
+  },
   "350911491": null,
   "350917610": null,
   "350918199": null,
@@ -8256,6 +8478,7 @@
   },
   "351115489": null,
   "351118647": null,
+  "351125434": null,
   "351129339": {
     "EIN": "351129339",
     "totalFunctionalExpenses": 19094412,
@@ -8280,6 +8503,11 @@
   "351291588": null,
   "351302836": null,
   "351328806": null,
+  "351330472": {
+    "EIN": "351330472",
+    "totalFunctionalExpenses": 2889242913,
+    "name": "FRANCISCAN ALLIANCE INC"
+  },
   "351343019": {
     "EIN": "351343019",
     "totalFunctionalExpenses": 17316998,
@@ -8293,7 +8521,17 @@
   "351378456": null,
   "351392974": null,
   "351394342": null,
+  "351403134": {
+    "EIN": "351403134",
+    "totalFunctionalExpenses": 17103069,
+    "name": "NORTHEASTERN CENTER INC"
+  },
   "351404387": null,
+  "351410753": {
+    "EIN": "351410753",
+    "totalFunctionalExpenses": 1544343,
+    "name": "PROJECT MERCY INC"
+  },
   "351425971": null,
   "351432587": null,
   "351443105": null,
@@ -8859,6 +9097,11 @@
   },
   "362252360": null,
   "362255350": null,
+  "362256036": {
+    "EIN": "362256036",
+    "totalFunctionalExpenses": 313211289,
+    "name": "Rehabilitation Institute of Chicago"
+  },
   "362261602": null,
   "362261990": null,
   "362264414": {
@@ -9252,6 +9495,11 @@
   "363954197": null,
   "363955804": null,
   "363959353": null,
+  "363965251": {
+    "EIN": "363965251",
+    "totalFunctionalExpenses": 48957977,
+    "name": "naperville psychiatric ventures"
+  },
   "363985468": null,
   "363992537": null,
   "363993337": null,
@@ -9425,6 +9673,7 @@
   "366168815": null,
   "366191374": null,
   "366198426": null,
+  "366211030": null,
   "366212451": null,
   "366217703": null,
   "366219639": null,
@@ -9756,9 +10005,19 @@
     "name": "RICHLAND MEMORIAL HOSPITAL"
   },
   "371390663": null,
+  "371396010": {
+    "EIN": "371396010",
+    "totalFunctionalExpenses": 27362273,
+    "name": "BLESSINGCARE CORPORATION"
+  },
   "371411984": null,
   "371413286": null,
   "371424390": null,
+  "371453409": {
+    "EIN": "371453409",
+    "totalFunctionalExpenses": 58647787,
+    "name": "The Menninger Clinic"
+  },
   "371455761": null,
   "371458857": null,
   "371476534": null,
@@ -9873,6 +10132,11 @@
     "totalFunctionalExpenses": 9727183,
     "name": "CARELINK OF JACKSON"
   },
+  "381218516": {
+    "EIN": "381218516",
+    "totalFunctionalExpenses": 343298991,
+    "name": "MCLAREN MACOMB"
+  },
   "381303843": {
     "EIN": "381303843",
     "totalFunctionalExpenses": 108577693,
@@ -9962,6 +10226,11 @@
   },
   "381366958": null,
   "381367080": null,
+  "381368347": {
+    "EIN": "381368347",
+    "totalFunctionalExpenses": 153385713,
+    "name": "ELLA E M BROWN CHARITABLE CIRCLE"
+  },
   "381368360": {
     "EIN": "381368360",
     "totalFunctionalExpenses": 156530963,
@@ -9974,6 +10243,11 @@
     "name": "Lakeland Community Hospital Watervliet"
   },
   "381369604": null,
+  "381369611": {
+    "EIN": "381369611",
+    "totalFunctionalExpenses": 212169745,
+    "name": "MCLAREN PORT HURON"
+  },
   "381369796": {
     "EIN": "381369796",
     "totalFunctionalExpenses": 16964147,
@@ -10000,13 +10274,28 @@
     "totalFunctionalExpenses": 19772093,
     "name": "PAUL OLIVER MEMORIAL HOSPITAL"
   },
+  "381420304": {
+    "EIN": "381420304",
+    "totalFunctionalExpenses": 90740286,
+    "name": "MCLAREN CENTRAL MICHIGAN"
+  },
   "381422403": null,
   "381426919": {
     "EIN": "381426919",
     "totalFunctionalExpenses": 402121954,
     "name": "BOTSFORD GENERAL HOSPITAL"
   },
+  "381428164": {
+    "EIN": "381428164",
+    "totalFunctionalExpenses": 209593625,
+    "name": "MCLAREN OAKLAND"
+  },
   "381433000": null,
+  "381434090": {
+    "EIN": "381434090",
+    "totalFunctionalExpenses": 367840246,
+    "name": "MCLAREN GREATER LANSING"
+  },
   "381437919": {
     "EIN": "381437919",
     "totalFunctionalExpenses": 127492680,
@@ -10093,6 +10382,11 @@
     "name": "HARBOR BEACH COMMUNITY HOSPITAL"
   },
   "381575570": null,
+  "381576680": {
+    "EIN": "381576680",
+    "totalFunctionalExpenses": 16247051,
+    "name": "ASCENSION BRIGHTON CENTER FOR RECOVERY (FKA BRIGHTON CENTER FOR RECOVERY)"
+  },
   "381577224": null,
   "381578217": null,
   "381619577": {
@@ -10145,6 +10439,11 @@
   "381958790": null,
   "381969044": null,
   "381975452": null,
+  "381976271": {
+    "EIN": "381976271",
+    "totalFunctionalExpenses": 329396614,
+    "name": "MCLAREN BAY REGION"
+  },
   "381977050": null,
   "381984289": {
     "EIN": "381984289",
@@ -10187,6 +10486,11 @@
   "382135473": null,
   "382138856": null,
   "382139025": null,
+  "382146751": {
+    "EIN": "382146751",
+    "totalFunctionalExpenses": 258644495,
+    "name": "MCLAREN NORTHERN MICHIGAN"
+  },
   "382149602": null,
   "382150252": null,
   "382156534": null,
@@ -10239,6 +10543,11 @@
     "name": "ASCENSION GENESYS HOSPITAL"
   },
   "382379457": null,
+  "382383119": {
+    "EIN": "382383119",
+    "totalFunctionalExpenses": 432603144,
+    "name": "MCLAREN FLINT"
+  },
   "382395647": null,
   "382397643": null,
   "382406558": null,
@@ -10303,6 +10612,11 @@
   "382673057": null,
   "382679075": null,
   "382681062": null,
+  "382689033": {
+    "EIN": "382689033",
+    "totalFunctionalExpenses": 120924239,
+    "name": "MCLAREN LAPEER REGION"
+  },
   "382704374": null,
   "382713145": null,
   "382714753": null,
@@ -10321,6 +10635,11 @@
     "name": "BRONSON BATTLE CREEK HOSPITAL"
   },
   "382777750": null,
+  "382791823": {
+    "EIN": "382791823",
+    "totalFunctionalExpenses": 307134045,
+    "name": "HENRY FORD WYANDOTTE HOSPITAL"
+  },
   "382796005": {
     "EIN": "382796005",
     "totalFunctionalExpenses": 85038779,
@@ -10393,6 +10712,11 @@
     "EIN": "383160564",
     "totalFunctionalExpenses": 37947618,
     "name": "ASCENSION RIVER DISTRICT HOSPITAL"
+  },
+  "383161753": {
+    "EIN": "383161753",
+    "totalFunctionalExpenses": 4777197,
+    "name": "MCLAREN BAY SPECIAL CARE"
   },
   "383161904": null,
   "383172025": null,
@@ -10538,6 +10862,11 @@
   "383809938": null,
   "383809982": null,
   "383816505": null,
+  "383833117": {
+    "EIN": "383833117",
+    "totalFunctionalExpenses": 54829798,
+    "name": "St John Broken Arrow Inc"
+  },
   "383834255": null,
   "383835105": {
     "EIN": "383835105",
@@ -10558,6 +10887,11 @@
   "383907244": null,
   "383914097": null,
   "383917409": null,
+  "383952644": {
+    "EIN": "383952644",
+    "totalFunctionalExpenses": 10907256988,
+    "name": "MAYO CLINIC GROUP RETURN"
+  },
   "383975135": {
     "EIN": "383975135",
     "totalFunctionalExpenses": 41895123,
@@ -10728,6 +11062,11 @@
     "totalFunctionalExpenses": 442450937,
     "name": "MERITER HOSPITAL INC"
   },
+  "390806395": {
+    "EIN": "390806395",
+    "totalFunctionalExpenses": 136647500,
+    "name": "HOLY FAMILY MEMORIAL INC"
+  },
   "390806404": {
     "EIN": "390806404",
     "totalFunctionalExpenses": 78513883,
@@ -10792,6 +11131,11 @@
     "totalFunctionalExpenses": 19318970,
     "name": "ASCENSION GOOD SAMARITAN HOSPITAL INC"
   },
+  "390808509": {
+    "EIN": "390808509",
+    "totalFunctionalExpenses": 175021509,
+    "name": "The Monroe Clinic Inc"
+  },
   "390808511": null,
   "390808526": {
     "EIN": "390808526",
@@ -10818,6 +11162,11 @@
     "EIN": "390816818",
     "totalFunctionalExpenses": 225390472,
     "name": "Ascension NE Wisconsin Inc (FKA St Elizabeth Hospital Inc)"
+  },
+  "390816845": {
+    "EIN": "390816845",
+    "totalFunctionalExpenses": 316341380,
+    "name": "FROEDTERT SOUTH INC"
   },
   "390816857": {
     "EIN": "390816857",
@@ -10921,6 +11270,11 @@
     "EIN": "390892183",
     "totalFunctionalExpenses": 25478901,
     "name": "SPOONER HEALTH SYSTEM INC"
+  },
+  "390902199": {
+    "EIN": "390902199",
+    "totalFunctionalExpenses": 13220236,
+    "name": "Sacred Heart Rehabilitation Institute Inc"
   },
   "390905385": {
     "EIN": "390905385",
@@ -11194,6 +11548,11 @@
   "391654755": null,
   "391655132": null,
   "391656161": null,
+  "391657627": {
+    "EIN": "391657627",
+    "totalFunctionalExpenses": 24666472,
+    "name": "BELLIN PSYCHIATRIC CENTER"
+  },
   "391664109": null,
   "391670223": null,
   "391681547": null,
@@ -11231,6 +11590,11 @@
   "391825838": null,
   "391828080": null,
   "391833207": null,
+  "391834639": {
+    "EIN": "391834639",
+    "totalFunctionalExpenses": 331588053,
+    "name": "Columbia St Mary's Inc"
+  },
   "391834961": null,
   "391834962": {
     "EIN": "391834962",
@@ -11259,6 +11623,11 @@
     "totalFunctionalExpenses": 16968295,
     "name": "MANNING REGIONAL HEALTHCARE CENTER"
   },
+  "391904975": {
+    "EIN": "391904975",
+    "totalFunctionalExpenses": 8423562,
+    "name": "REGIONAL WEST GARDEN COUNTY"
+  },
   "391905171": null,
   "391908462": null,
   "391919806": null,
@@ -11272,6 +11641,7 @@
   "391975149": null,
   "391979707": null,
   "392014409": null,
+  "392016396": null,
   "392020734": null,
   "392029106": null,
   "392031968": {
@@ -11345,6 +11715,11 @@
   "410623988": null,
   "410637089": null,
   "410637595": null,
+  "410682405": {
+    "EIN": "410682405",
+    "totalFunctionalExpenses": 185172799,
+    "name": "Hazelden Betty Ford Foundation"
+  },
   "410684657": null,
   "410691275": null,
   "410693856": null,
@@ -11534,6 +11909,11 @@
   "410847713": null,
   "410849301": null,
   "410851371": null,
+  "410853163": {
+    "EIN": "410853163",
+    "totalFunctionalExpenses": 10816215,
+    "name": "Avera Tyler"
+  },
   "410855367": {
     "EIN": "410855367",
     "totalFunctionalExpenses": 218505274,
@@ -11561,6 +11941,11 @@
   "410912391": null,
   "410914354": null,
   "410916605": null,
+  "410919153": {
+    "EIN": "410919153",
+    "totalFunctionalExpenses": 84615924,
+    "name": "Avera Marshall"
+  },
   "410955577": null,
   "410956618": {
     "EIN": "410956618",
@@ -11896,6 +12281,11 @@
     "name": "ST LUKE'S METHODIST HOSPITAL"
   },
   "420619332": null,
+  "420670596": {
+    "EIN": "420670596",
+    "totalFunctionalExpenses": 14247800,
+    "name": "SUMNER COMMUNITY CLUB"
+  },
   "420680308": {
     "EIN": "420680308",
     "totalFunctionalExpenses": 28847375,
@@ -11920,6 +12310,11 @@
     "EIN": "420680355",
     "totalFunctionalExpenses": 106778558,
     "name": "JENNIE EDMUNDSON MEMORIAL HOSPITAL"
+  },
+  "420680370": {
+    "EIN": "420680370",
+    "totalFunctionalExpenses": 27324090,
+    "name": "Avera Holy Family"
   },
   "420680372": null,
   "420680387": null,
@@ -12183,6 +12578,11 @@
   },
   "421264666": null,
   "421275893": null,
+  "421276632": {
+    "EIN": "421276632",
+    "totalFunctionalExpenses": 16041700,
+    "name": "STL CARE COMPANY"
+  },
   "421282535": null,
   "421286953": null,
   "421288263": null,
@@ -12398,6 +12798,11 @@
   "430662499": null,
   "430662529": null,
   "430666738": null,
+  "430666765": {
+    "EIN": "430666765",
+    "totalFunctionalExpenses": 32416412,
+    "name": "THE RANKEN-JORDAN HOME FOR CONVALESCENT"
+  },
   "430670936": null,
   "430678755": null,
   "430680952": null,
@@ -12704,6 +13109,11 @@
   "432007393": null,
   "432007486": null,
   "432007488": null,
+  "432007492": {
+    "EIN": "432007492",
+    "totalFunctionalExpenses": 47638968,
+    "name": "HOME & COMMUNITY SERVICES INC"
+  },
   "432007498": null,
   "432008974": {
     "EIN": "432008974",
@@ -13351,6 +13761,11 @@
   "453784543": null,
   "453787207": null,
   "453790483": null,
+  "453791176": {
+    "EIN": "453791176",
+    "totalFunctionalExpenses": 3811087565,
+    "name": "Sanford Group Return"
+  },
   "453792193": null,
   "453800308": null,
   "453801467": null,
@@ -13493,6 +13908,11 @@
   "454972577": null,
   "454983293": null,
   "455011816": null,
+  "455023260": {
+    "EIN": "455023260",
+    "totalFunctionalExpenses": 1489539020,
+    "name": "PARK NICOLLET GROUP RETURN"
+  },
   "455024624": null,
   "455036221": null,
   "455039355": null,
@@ -13584,12 +14004,22 @@
   },
   "460224588": null,
   "460224589": null,
+  "460224598": {
+    "EIN": "460224598",
+    "totalFunctionalExpenses": 198053977,
+    "name": "Avera St Luke's"
+  },
   "460224600": null,
   "460224603": null,
   "460224604": {
     "EIN": "460224604",
     "totalFunctionalExpenses": 118035616,
     "name": "Avera Queen of Peace Hospital"
+  },
+  "460224743": {
+    "EIN": "460224743",
+    "totalFunctionalExpenses": 1014434772,
+    "name": "AVERA MCKENNAN"
   },
   "460225414": {
     "EIN": "460225414",
@@ -13855,6 +14285,11 @@
   "461317334": null,
   "461319390": null,
   "461326514": null,
+  "461340679": {
+    "EIN": "461340679",
+    "totalFunctionalExpenses": 0,
+    "name": "DUKE QUALITY NETWORK INC"
+  },
   "461375262": null,
   "461383328": null,
   "461392824": null,
@@ -13894,6 +14329,11 @@
   "461615260": null,
   "461617516": null,
   "461625807": null,
+  "461629800": {
+    "EIN": "461629800",
+    "totalFunctionalExpenses": 77120875,
+    "name": "CONWAY COMMUNITY SERVICES"
+  },
   "461635259": null,
   "461660806": null,
   "461681667": null,
@@ -14131,6 +14571,11 @@
   "463708462": null,
   "463714896": null,
   "463715246": null,
+  "463725132": {
+    "EIN": "463725132",
+    "totalFunctionalExpenses": 8262838,
+    "name": "VOA REHABILITATION CENTERS INC"
+  },
   "463745855": null,
   "463751550": null,
   "463756504": null,
@@ -14321,6 +14766,11 @@
   "465297054": null,
   "465297603": null,
   "465318393": null,
+  "465322209": {
+    "EIN": "465322209",
+    "totalFunctionalExpenses": 573778984,
+    "name": "Port City Operating Company LLC"
+  },
   "465338502": {
     "EIN": "465338502",
     "totalFunctionalExpenses": 1348742114,
@@ -14419,6 +14869,11 @@
     "EIN": "470376604",
     "totalFunctionalExpenses": 503421969,
     "name": "NEBRASKA METHODIST HOSPITAL"
+  },
+  "470376606": {
+    "EIN": "470376606",
+    "totalFunctionalExpenses": 299020137,
+    "name": "FATHER FLANAGAN'S BOYS' HOME"
   },
   "470376615": {
     "EIN": "470376615",
@@ -14550,6 +15005,11 @@
     "EIN": "470484764",
     "totalFunctionalExpenses": 545587465,
     "name": "ALEGENT HEALTH - BERGAN MERCY HEALTH"
+  },
+  "470486026": {
+    "EIN": "470486026",
+    "totalFunctionalExpenses": 47809781,
+    "name": "FRANCISCAN CARE SERVICES INC"
   },
   "470491571": null,
   "470495359": null,
@@ -14960,6 +15420,11 @@
     "totalFunctionalExpenses": 1972024563,
     "name": "Albany Medical Center Group"
   },
+  "473884840": {
+    "EIN": "473884840",
+    "totalFunctionalExpenses": 22843231,
+    "name": "TGCH Inc"
+  },
   "473912229": null,
   "473912727": null,
   "473992060": null,
@@ -14977,6 +15442,11 @@
   "474101801": null,
   "474164402": null,
   "474178944": null,
+  "474196634": {
+    "EIN": "474196634",
+    "totalFunctionalExpenses": 544129288,
+    "name": "SSM-SLUH Inc"
+  },
   "474199753": null,
   "474221241": null,
   "474227452": null,
@@ -15028,6 +15498,11 @@
   "474784379": null,
   "474787535": null,
   "474829539": null,
+  "474837308": {
+    "EIN": "474837308",
+    "totalFunctionalExpenses": 37927443,
+    "name": "OCH HOLDINGS"
+  },
   "474841103": null,
   "474856081": null,
   "474876589": null,
@@ -15224,6 +15699,11 @@
     "totalFunctionalExpenses": 468960126,
     "name": "SHAWNEE MISSION MEDICAL CENTER INC"
   },
+  "480642318": {
+    "EIN": "480642318",
+    "totalFunctionalExpenses": 19756183,
+    "name": "PRAIRIE VIEW INC"
+  },
   "480663711": {
     "EIN": "480663711",
     "totalFunctionalExpenses": 3571693,
@@ -15319,6 +15799,11 @@
   "480952810": null,
   "480953164": null,
   "480955489": null,
+  "480956045": {
+    "EIN": "480956045",
+    "totalFunctionalExpenses": 40226088,
+    "name": "MERCY KANSAS COMMUNITIES"
+  },
   "480957477": null,
   "480958384": null,
   "480958587": null,
@@ -15460,7 +15945,42 @@
   "481221800": null,
   "481223766": null,
   "481225436": null,
+  "481226830": {
+    "EIN": "481226830",
+    "totalFunctionalExpenses": 15812118,
+    "name": "GREAT PLAINS OF SMITH CO INC"
+  },
+  "481226831": {
+    "EIN": "481226831",
+    "totalFunctionalExpenses": 11860928,
+    "name": "GREAT PLAINS OF CHEYENNE COUNTY INC"
+  },
+  "481226833": {
+    "EIN": "481226833",
+    "totalFunctionalExpenses": 9180590,
+    "name": "GREAT PLAINS OF KIOWA CO INC"
+  },
+  "481226856": {
+    "EIN": "481226856",
+    "totalFunctionalExpenses": 6676548,
+    "name": "GREAT PLAINS OF OTTAWA COUNTY INC"
+  },
+  "481226976": {
+    "EIN": "481226976",
+    "totalFunctionalExpenses": 7024052,
+    "name": "GREAT PLAINS OF ELLINWOOD INC"
+  },
+  "481226977": {
+    "EIN": "481226977",
+    "totalFunctionalExpenses": 13665453,
+    "name": "GREAT PLAINS OF REPUBLIC CO INC"
+  },
   "481230936": null,
+  "481236156": {
+    "EIN": "481236156",
+    "totalFunctionalExpenses": 12944633,
+    "name": "GREAT PLAINS OF SABETHA INC"
+  },
   "481236589": null,
   "481240823": null,
   "481241590": null,
@@ -15547,6 +16067,11 @@
   "510138282": null,
   "510138977": null,
   "510140156": null,
+  "510141601": {
+    "EIN": "510141601",
+    "totalFunctionalExpenses": 215711380,
+    "name": "SHEPHERD CENTER INC"
+  },
   "510141667": null,
   "510141783": null,
   "510142144": null,
@@ -15601,6 +16126,11 @@
   "510176315": null,
   "510176563": null,
   "510176990": null,
+  "510177273": {
+    "EIN": "510177273",
+    "totalFunctionalExpenses": 27511593,
+    "name": "THE CENTERS INC"
+  },
   "510178010": null,
   "510178051": null,
   "510178451": null,
@@ -15891,6 +16421,11 @@
     "EIN": "520607913",
     "totalFunctionalExpenses": 77314164,
     "name": "LEVINDALE HEBREW GERIATRIC CENTER"
+  },
+  "520607921": {
+    "EIN": "520607921",
+    "totalFunctionalExpenses": 25840985,
+    "name": "MCCREADY FOUNDATION INC"
   },
   "520607945": {
     "EIN": "520607945",
@@ -16553,6 +17088,11 @@
   "530196583": null,
   "530196584": null,
   "530196597": null,
+  "530196602": {
+    "EIN": "530196602",
+    "totalFunctionalExpenses": 361663234,
+    "name": "LUCY WEBB HAYES NATIONAL TRAINING SCHOOL"
+  },
   "530196603": null,
   "530196636": {
     "EIN": "530196636",
@@ -16716,6 +17256,11 @@
     "name": "Carilion Stonewall Jackson Hospital"
   },
   "540568200": null,
+  "540573701": {
+    "EIN": "540573701",
+    "totalFunctionalExpenses": 5329971,
+    "name": "FHI SERVICES"
+  },
   "540573801": null,
   "540575812": null,
   "540619813": null,
@@ -16965,6 +17510,11 @@
     "name": "RICHMOND EYE AND EAR HEALTHCARE ALLIANCE"
   },
   "541919810": null,
+  "541920770": {
+    "EIN": "541920770",
+    "totalFunctionalExpenses": 98905123,
+    "name": "CAPITAL HOSPICE"
+  },
   "541924911": null,
   "541932761": null,
   "541937835": null,
@@ -17490,6 +18040,11 @@
     "name": "ASHE MEMORIAL HOSPITAL INC"
   },
   "560603922": null,
+  "560603925": {
+    "EIN": "560603925",
+    "totalFunctionalExpenses": 345582,
+    "name": "HENDERSONVANCE HEALTHCARE INC"
+  },
   "560611546": {
     "EIN": "560611546",
     "totalFunctionalExpenses": 44443804,
@@ -17553,6 +18108,11 @@
   "560928594": null,
   "560932998": null,
   "560946799": null,
+  "560949273": {
+    "EIN": "560949273",
+    "totalFunctionalExpenses": 12204239,
+    "name": "FELLOWSHIP HALL INC"
+  },
   "560952737": null,
   "560986537": null,
   "560988422": null,
@@ -17738,6 +18298,11 @@
   "561996741": null,
   "561998485": null,
   "562001399": null,
+  "562005198": {
+    "EIN": "562005198",
+    "totalFunctionalExpenses": 89886944,
+    "name": "MOUNTAINCARE INC"
+  },
   "562012634": null,
   "562033406": null,
   "562035485": null,
@@ -17798,6 +18363,7 @@
   "562325850": null,
   "562330309": null,
   "562330621": null,
+  "562333598": null,
   "562344399": null,
   "562351341": null,
   "562358912": null,
@@ -17863,6 +18429,11 @@
   "566000865": null,
   "566001394": null,
   "566007078": null,
+  "566017737": {
+    "EIN": "566017737",
+    "totalFunctionalExpenses": 1268441698,
+    "name": "Wakemed"
+  },
   "566023076": null,
   "566024172": {
     "EIN": "566024172",
@@ -17908,6 +18479,7 @@
   "570314404": null,
   "570314406": null,
   "570314408": null,
+  "570314409": null,
   "570314415": null,
   "570314422": null,
   "570314432": null,
@@ -18243,6 +18815,11 @@
   "581387324": null,
   "581391907": null,
   "581392531": null,
+  "581393820": {
+    "EIN": "581393820",
+    "totalFunctionalExpenses": 11050945,
+    "name": "HOSPICE SAVANNAH INC"
+  },
   "581395320": null,
   "581400436": null,
   "581400604": null,
@@ -18347,6 +18924,11 @@
   "581636959": null,
   "581640133": null,
   "581640184": null,
+  "581645396": {
+    "EIN": "581645396",
+    "totalFunctionalExpenses": 14051823,
+    "name": "BAPTIST MEMORIAL REGIONAL"
+  },
   "581647546": null,
   "581648764": null,
   "581649541": null,
@@ -18505,6 +19087,11 @@
   },
   "581958398": null,
   "581966791": null,
+  "581966795": {
+    "EIN": "581966795",
+    "totalFunctionalExpenses": 573166361,
+    "name": "DEKALB MEDICAL CENTER"
+  },
   "581969931": null,
   "581970417": null,
   "581973184": null,
@@ -18577,8 +19164,14 @@
   "582069027": null,
   "582070975": null,
   "582071821": null,
+  "582077522": null,
   "582078244": null,
   "582079819": null,
+  "582081599": {
+    "EIN": "582081599",
+    "totalFunctionalExpenses": 18571942,
+    "name": "DECATUR HEALTH RESOURCES"
+  },
   "582082527": null,
   "582086035": null,
   "582087692": null,
@@ -18820,6 +19413,11 @@
     "totalFunctionalExpenses": 783993583,
     "name": "MORTON PLANT HOSPITAL ASSOCIATION INC"
   },
+  "590634433": {
+    "EIN": "590634433",
+    "totalFunctionalExpenses": 1350209983,
+    "name": "THE NEMOURS FOUNDATION"
+  },
   "590634434": {
     "EIN": "590634434",
     "totalFunctionalExpenses": 958340724,
@@ -18954,11 +19552,21 @@
     "totalFunctionalExpenses": 529074953,
     "name": "Boca Raton Regional Hospital Inc"
   },
+  "591009537": {
+    "EIN": "591009537",
+    "totalFunctionalExpenses": 36616256,
+    "name": "CENTERSTONE OF FLORIDA INC"
+  },
   "591023117": null,
   "591054892": null,
   "591083502": null,
   "591092732": null,
   "591100828": null,
+  "591101553": {
+    "EIN": "591101553",
+    "totalFunctionalExpenses": 39047689,
+    "name": "CIRCLES OF CARE INC"
+  },
   "591105591": null,
   "591113901": {
     "EIN": "591113901",
@@ -18969,6 +19577,11 @@
   "591143105": null,
   "591146751": null,
   "591157081": null,
+  "591162148": {
+    "EIN": "591162148",
+    "totalFunctionalExpenses": 29918078,
+    "name": "APALACHEE CENTER INC"
+  },
   "591171320": {
     "EIN": "591171320",
     "totalFunctionalExpenses": 22752234,
@@ -18982,6 +19595,11 @@
   "591237047": null,
   "591258866": null,
   "591282610": null,
+  "591284678": {
+    "EIN": "591284678",
+    "totalFunctionalExpenses": 49951994,
+    "name": "VILLA MARIA NURSING &"
+  },
   "591371752": null,
   "591372690": null,
   "591380927": null,
@@ -19005,6 +19623,11 @@
   "591480970": null,
   "591514993": null,
   "591519622": null,
+  "591561501": {
+    "EIN": "591561501",
+    "totalFunctionalExpenses": 49659414,
+    "name": "LIFESTREAM BEHAVIORAL CENTER INC"
+  },
   "591571122": null,
   "591581805": null,
   "591605647": null,
@@ -19196,6 +19819,11 @@
   "592487135": null,
   "592487136": null,
   "592496241": null,
+  "592496294": {
+    "EIN": "592496294",
+    "totalFunctionalExpenses": 297044831,
+    "name": "INDIAN RIVER MEMORIAL HOSPITAL INC"
+  },
   "592500692": null,
   "592506611": null,
   "592506713": null,
@@ -19606,6 +20234,11 @@
   "610659633": null,
   "610660325": null,
   "610660795": null,
+  "610661458": {
+    "EIN": "610661458",
+    "totalFunctionalExpenses": 23805834,
+    "name": "NORTHERN KENTUCKY MHMR REGIONAL"
+  },
   "610662261": null,
   "610662739": null,
   "610666065": null,
@@ -19717,6 +20350,11 @@
     "totalFunctionalExpenses": 596910033,
     "name": "UNIVERSITY MEDICAL CENTER INC"
   },
+  "611297707": {
+    "EIN": "611297707",
+    "totalFunctionalExpenses": 20070554,
+    "name": "CCMH CORPORATION"
+  },
   "611300608": null,
   "611310466": null,
   "611312881": null,
@@ -19752,6 +20390,11 @@
   "611362057": null,
   "611370886": null,
   "611381952": null,
+  "611388556": {
+    "EIN": "611388556",
+    "totalFunctionalExpenses": 23335941,
+    "name": "EMHFL INC"
+  },
   "611391850": null,
   "611400619": {
     "EIN": "611400619",
@@ -20060,6 +20703,11 @@
   "621403517": null,
   "621407946": null,
   "621414205": null,
+  "621434530": {
+    "EIN": "621434530",
+    "totalFunctionalExpenses": 9538234,
+    "name": "CASE MANAGEMENT INC"
+  },
   "621438461": null,
   "621469595": null,
   "621475145": null,
@@ -20173,10 +20821,20 @@
   "630288841": null,
   "630288850": null,
   "630288852": null,
+  "630288856": {
+    "EIN": "630288856",
+    "totalFunctionalExpenses": 452957660,
+    "name": "MOBILE INFIRMARY ASSOCIATION"
+  },
   "630288861": {
     "EIN": "630288861",
     "totalFunctionalExpenses": 210757787,
     "name": "Providence Hospital"
+  },
+  "630288864": {
+    "EIN": "630288864",
+    "totalFunctionalExpenses": 431233557,
+    "name": "St Vincent's Birmingham"
   },
   "630288870": null,
   "630288878": null,
@@ -20233,6 +20891,11 @@
   "630524073": null,
   "630568762": null,
   "630578660": null,
+  "630578923": {
+    "EIN": "630578923",
+    "totalFunctionalExpenses": 225411807,
+    "name": "St Vincent's East"
+  },
   "630584010": null,
   "630588645": null,
   "630596656": null,
@@ -20297,6 +20960,11 @@
   },
   "630906048": null,
   "630908204": null,
+  "630909073": {
+    "EIN": "630909073",
+    "totalFunctionalExpenses": 24048529,
+    "name": "ST VINCENT'S BLOUNT"
+  },
   "630909345": null,
   "630910794": null,
   "630914247": null,
@@ -20627,6 +21295,7 @@
   "650077727": null,
   "650082772": null,
   "650088772": null,
+  "650098016": null,
   "650125982": null,
   "650132406": null,
   "650147586": null,
@@ -20781,6 +21450,11 @@
   "660427801": null,
   "660428120": null,
   "660428488": null,
+  "660428922": {
+    "EIN": "660428922",
+    "totalFunctionalExpenses": 3905435,
+    "name": "CENTRO DE SERVICIOS PRIMARIOS DE SA LUD INC"
+  },
   "660432514": null,
   "660466365": null,
   "660473469": null,
@@ -20792,6 +21466,11 @@
   },
   "660498051": null,
   "660537875": null,
+  "660561027": {
+    "EIN": "660561027",
+    "totalFunctionalExpenses": 53169564,
+    "name": "SERVICIOS MDICOS"
+  },
   "660562903": null,
   "660571457": {
     "EIN": "660571457",
@@ -21273,6 +21952,11 @@
     "name": "Christus Health Southwestern Louisiana"
   },
   "720417281": null,
+  "720423603": {
+    "EIN": "720423603",
+    "totalFunctionalExpenses": 17090698,
+    "name": "THE RAPIDES FOUNDATION"
+  },
   "720423635": {
     "EIN": "720423635",
     "totalFunctionalExpenses": 325229792,
@@ -21282,6 +21966,16 @@
     "EIN": "720423651",
     "totalFunctionalExpenses": 1289500835,
     "name": "Our Lady of the Lake Hospital Inc"
+  },
+  "720423659": {
+    "EIN": "720423659",
+    "totalFunctionalExpenses": 288886004,
+    "name": "Touro Infirmary"
+  },
+  "720423889": {
+    "EIN": "720423889",
+    "totalFunctionalExpenses": 1155166000,
+    "name": "THE ADMINISTRATORS OF THE TULANE EDUCATIONAL FUND"
   },
   "720445607": {
     "EIN": "720445607",
@@ -21311,6 +22005,11 @@
     "EIN": "720500565",
     "totalFunctionalExpenses": 25379712,
     "name": "Desoto Hospital Association Inc"
+  },
+  "720502505": {
+    "EIN": "720502505",
+    "totalFunctionalExpenses": 8276645664,
+    "name": "OCHSNER CLINIC FOUNDATION"
   },
   "720505495": null,
   "720522454": null,
@@ -21353,6 +22052,11 @@
   "720828785": null,
   "720852398": null,
   "720859040": null,
+  "720864449": {
+    "EIN": "720864449",
+    "totalFunctionalExpenses": 17292550,
+    "name": "WESTSIDE HABILITATION CENTER INC"
+  },
   "720876773": null,
   "720883155": null,
   "720904707": null,
@@ -21535,6 +22239,11 @@
     "name": "Farmers Union Hospital Association"
   },
   "730579298": null,
+  "730580264": {
+    "EIN": "730580264",
+    "totalFunctionalExpenses": 50225050,
+    "name": "THE CHILDREN'S CENTER INC"
+  },
   "730580274": null,
   "730587210": null,
   "730590036": null,
@@ -21555,6 +22264,11 @@
     "name": "SSM Health Care of Oklahoma"
   },
   "730657931": null,
+  "730662663": {
+    "EIN": "730662663",
+    "totalFunctionalExpenses": 19586699,
+    "name": "St John Sapulpa Inc"
+  },
   "730685198": null,
   "730699842": null,
   "730700090": {
@@ -21625,6 +22339,11 @@
   "731177858": null,
   "731188521": null,
   "731192764": null,
+  "731192765": {
+    "EIN": "731192765",
+    "totalFunctionalExpenses": 219498307,
+    "name": "INTEGRIS AMBULATORY CARE CORP"
+  },
   "731200262": null,
   "731203942": null,
   "731209617": null,
@@ -21642,6 +22361,11 @@
   "731260583": null,
   "731260588": null,
   "731274465": null,
+  "731280067": {
+    "EIN": "731280067",
+    "totalFunctionalExpenses": 15074516,
+    "name": "Parkside Inc"
+  },
   "731288960": null,
   "731293682": null,
   "731308273": {
@@ -21756,7 +22480,17 @@
   "741109630": null,
   "741109631": null,
   "741109633": null,
+  "741109636": {
+    "EIN": "741109636",
+    "totalFunctionalExpenses": 230249714,
+    "name": "ASCENSION PROVIDENCE"
+  },
   "741109641": null,
+  "741109643": {
+    "EIN": "741109643",
+    "totalFunctionalExpenses": 1749935966,
+    "name": "ASCENSION SETON"
+  },
   "741109661": null,
   "741109665": {
     "EIN": "741109665",
@@ -21775,6 +22509,11 @@
     "EIN": "741152597",
     "totalFunctionalExpenses": 4946988419,
     "name": "Memorial Hermann Health System"
+  },
+  "741153067": {
+    "EIN": "741153067",
+    "totalFunctionalExpenses": 28624381,
+    "name": "Clarity Child Guidance Center"
   },
   "741159753": null,
   "741161938": {
@@ -21824,6 +22563,7 @@
     "totalFunctionalExpenses": 98326081,
     "name": "Methodist Healthcare Ministries"
   },
+  "741297210": null,
   "741301485": null,
   "741303720": {
     "EIN": "741303720",
@@ -21833,6 +22573,11 @@
   "741318727": null,
   "741339050": null,
   "741343044": null,
+  "741356589": {
+    "EIN": "741356589",
+    "totalFunctionalExpenses": 66730530,
+    "name": "St David's Foundation"
+  },
   "741362741": null,
   "741366280": null,
   "741367041": null,
@@ -22117,6 +22862,11 @@
   "742830626": null,
   "742835828": null,
   "742838488": null,
+  "742842747": {
+    "EIN": "742842747",
+    "totalFunctionalExpenses": 17262564,
+    "name": "West Central Kansas Association Inc"
+  },
   "742844558": null,
   "742847917": null,
   "742849118": null,
@@ -22137,6 +22887,11 @@
   "742869762": null,
   "742875896": null,
   "742892751": null,
+  "742898615": {
+    "EIN": "742898615",
+    "totalFunctionalExpenses": 20139861,
+    "name": "Christus Continuing Care"
+  },
   "742909634": null,
   "742920954": null,
   "742924512": null,
@@ -23052,6 +23807,11 @@
   },
   "810231774": null,
   "810231777": null,
+  "810231784": {
+    "EIN": "810231784",
+    "totalFunctionalExpenses": 710874444,
+    "name": "Billings Clinic"
+  },
   "810231785": {
     "EIN": "810231785",
     "totalFunctionalExpenses": 110258020,
@@ -23235,6 +23995,11 @@
   "810417735": null,
   "810419904": null,
   "810420650": null,
+  "810420653": {
+    "EIN": "810420653",
+    "totalFunctionalExpenses": 14416369,
+    "name": "NORTHWEST HORIZONS INC"
+  },
   "810420980": null,
   "810421823": {
     "EIN": "810421823",
@@ -24557,6 +25322,11 @@
   "840521839": null,
   "840524800": null,
   "840561224": null,
+  "840563230": {
+    "EIN": "840563230",
+    "totalFunctionalExpenses": 196676008,
+    "name": "VAIL CLINIC INC"
+  },
   "840567786": null,
   "840576459": null,
   "840586742": {
@@ -25006,6 +25776,11 @@
   "860193726": null,
   "860204268": null,
   "860205678": null,
+  "860206928": {
+    "EIN": "860206928",
+    "totalFunctionalExpenses": 42733268,
+    "name": "WEST YAVAPAI GUIDANCE CLINIC"
+  },
   "860207499": null,
   "860208451": {
     "EIN": "860208451",
@@ -25023,6 +25798,11 @@
   },
   "860220306": null,
   "860223116": null,
+  "860223720": {
+    "EIN": "860223720",
+    "totalFunctionalExpenses": 21672300,
+    "name": "THE GUIDANCE CENTER INC"
+  },
   "860223970": null,
   "860227208": null,
   "860250938": null,
@@ -25265,6 +26045,11 @@
   "880359697": null,
   "880379320": null,
   "880387136": null,
+  "880401489": {
+    "EIN": "880401489",
+    "totalFunctionalExpenses": 1527980,
+    "name": "DR MIRIAM & SHELDON G ADELSON CLINIC FOR"
+  },
   "880405927": {
     "EIN": "880405927",
     "totalFunctionalExpenses": 60674745,
@@ -25383,6 +26168,11 @@
     "totalFunctionalExpenses": 1550002914,
     "name": "CHILDREN'S HEALTHCARE OF ATLANTA GROUP RETURN"
   },
+  "900790361": {
+    "EIN": "900790361",
+    "totalFunctionalExpenses": 2063862895,
+    "name": "EMORY GROUP RETURN"
+  },
   "900805455": null,
   "900838127": null,
   "900838465": null,
@@ -25486,6 +26276,11 @@
   "910614877": null,
   "910615846": null,
   "910617726": null,
+  "910637400": {
+    "EIN": "910637400",
+    "totalFunctionalExpenses": 398834385,
+    "name": "UW MEDICINENORTHWEST"
+  },
   "910645439": null,
   "910652651": {
     "EIN": "910652651",
@@ -25513,6 +26308,11 @@
   "910728988": null,
   "910836093": null,
   "910838639": null,
+  "910848698": {
+    "EIN": "910848698",
+    "totalFunctionalExpenses": 66098569,
+    "name": "Navos"
+  },
   "910853746": null,
   "910853801": null,
   "910854239": null,
@@ -25727,6 +26527,11 @@
   "911920394": null,
   "911930327": null,
   "911932918": null,
+  "911935159": {
+    "EIN": "911935159",
+    "totalFunctionalExpenses": 610353946,
+    "name": "SEATTLE CANCER CARE ALLIANCE"
+  },
   "911939739": null,
   "911940902": null,
   "911948115": null,
@@ -25766,6 +26571,41 @@
   "912146048": null,
   "912147185": null,
   "912151998": null,
+  "912153073": {
+    "EIN": "912153073",
+    "totalFunctionalExpenses": 8774576074,
+    "name": "THE CLEVELAND CLINIC FOUNDATION"
+  },
+  "912154267": {
+    "EIN": "912154267",
+    "totalFunctionalExpenses": 4184654098,
+    "name": "Memorial Sloan-Kettering Cancer Center"
+  },
+  "912154436": {
+    "EIN": "912154436",
+    "totalFunctionalExpenses": 321213578,
+    "name": "O'Connor Hospital"
+  },
+  "912154437": {
+    "EIN": "912154437",
+    "totalFunctionalExpenses": 94557203,
+    "name": "Saint Louise Regional Hospital"
+  },
+  "912154438": {
+    "EIN": "912154438",
+    "totalFunctionalExpenses": 279554078,
+    "name": "St Vincent Medical Center"
+  },
+  "912154439": {
+    "EIN": "912154439",
+    "totalFunctionalExpenses": 459307779,
+    "name": "St Francis Medical Center"
+  },
+  "912154441": {
+    "EIN": "912154441",
+    "totalFunctionalExpenses": 285124415,
+    "name": "Seton Medical Center"
+  },
   "912155626": {
     "EIN": "912155626",
     "totalFunctionalExpenses": 2646205390,
@@ -25888,6 +26728,11 @@
     "totalFunctionalExpenses": 196013214,
     "name": "ALBANY GENERAL HOSPITAL"
   },
+  "930223960": {
+    "EIN": "930223960",
+    "totalFunctionalExpenses": 723739424,
+    "name": "ASANTE"
+  },
   "930267435": null,
   "930281321": {
     "EIN": "930281321",
@@ -25993,6 +26838,11 @@
     "name": "SALEM HEALTH"
   },
   "930582360": null,
+  "930583856": {
+    "EIN": "930583856",
+    "totalFunctionalExpenses": 102141689,
+    "name": "COLUMBIA LUTHERAN CHARITIES"
+  },
   "930591528": {
     "EIN": "930591528",
     "totalFunctionalExpenses": 155313185,
@@ -26002,6 +26852,11 @@
     "EIN": "930602940",
     "totalFunctionalExpenses": 784576604,
     "name": "St Charles Health System Inc"
+  },
+  "930606316": {
+    "EIN": "930606316",
+    "totalFunctionalExpenses": 15711462,
+    "name": "SERENITY LANE"
   },
   "930608012": null,
   "930618975": {
@@ -26034,6 +26889,7 @@
   "930726917": null,
   "930740519": null,
   "930751507": null,
+  "930753926": null,
   "930757655": null,
   "930770054": null,
   "930771304": null,
@@ -26186,6 +27042,11 @@
     "totalFunctionalExpenses": 285987368,
     "name": "Hanford Community Hospital"
   },
+  "940545320": {
+    "EIN": "940545320",
+    "totalFunctionalExpenses": 71743754,
+    "name": "HEBREW HOME FOR AGED DISABLED"
+  },
   "940562680": {
     "EIN": "940562680",
     "totalFunctionalExpenses": 4084808080,
@@ -26215,6 +27076,11 @@
     "EIN": "941049467",
     "totalFunctionalExpenses": 30146250,
     "name": "ORCHARD HOSPITAL"
+  },
+  "941080917": {
+    "EIN": "941080917",
+    "totalFunctionalExpenses": 229620338,
+    "name": "SUTTER CENTRAL VALLEY HOSPITALS"
   },
   "941085570": null,
   "941101228": {
@@ -26465,6 +27331,11 @@
   "942202421": null,
   "942210447": null,
   "942217261": null,
+  "942219349": {
+    "EIN": "942219349",
+    "totalFunctionalExpenses": 64470013,
+    "name": "TARZANA TREATMENT CENTERS INC"
+  },
   "942223670": null,
   "942227650": null,
   "942232394": null,
@@ -26969,6 +27840,11 @@
     "totalFunctionalExpenses": 63359010,
     "name": "Barlow Respiratory Hospital"
   },
+  "951652916": {
+    "EIN": "951652916",
+    "totalFunctionalExpenses": 58354729,
+    "name": "MOTION PICTURE AND TELEVISION FUND"
+  },
   "951656361": null,
   "951656366": {
     "EIN": "951656366",
@@ -27048,6 +27924,11 @@
     "name": "Glendale Adventist Medical Center"
   },
   "951816023": null,
+  "951831045": {
+    "EIN": "951831045",
+    "totalFunctionalExpenses": 60103349,
+    "name": "GRANCELL VILLAGE OF THE LOS ANGELES"
+  },
   "951855133": null,
   "951856197": null,
   "951867598": null,
@@ -27491,6 +28372,7 @@
   "956047779": null,
   "956047878": null,
   "956048924": null,
+  "956050344": null,
   "956051253": null,
   "956052259": null,
   "956053224": null,
@@ -27567,6 +28449,7 @@
   "957067743": null,
   "957076179": null,
   "957110165": null,
+  "980020281": null,
   "980038349": null,
   "980040652": null,
   "980042539": null,
@@ -27588,6 +28471,7 @@
   "981263645": null,
   "981324087": null,
   "981358092": null,
+  "986000971": null,
   "986001062": null,
   "986001141": null,
   "986001269": null,
@@ -29447,5 +30331,45 @@
   "010607900": null,
   "061482503": null,
   "050559636": null,
-  "042103885": null
+  "042103885": null,
+  "043794775": {
+    "EIN": "043794775",
+    "totalFunctionalExpenses": 6406995,
+    "name": "SHARON S RICHARDSON COMMUNITY"
+  },
+  "042103543": {
+    "EIN": "042103543",
+    "totalFunctionalExpenses": 19113961,
+    "name": "AUSTEN RIGGS CENTER INC"
+  },
+  "060878822": {
+    "EIN": "060878822",
+    "totalFunctionalExpenses": 22448029,
+    "name": "THE CONNECTICUT HOSPICE INC"
+  },
+  "036013761": {
+    "EIN": "036013761",
+    "totalFunctionalExpenses": 83522290,
+    "name": "Northeastern Vermont Regional Hosp Inc"
+  },
+  "030107360": {
+    "EIN": "030107360",
+    "totalFunctionalExpenses": 69408362,
+    "name": "Brattleboro Retreat"
+  },
+  "042104298": {
+    "EIN": "042104298",
+    "totalFunctionalExpenses": 136210352,
+    "name": "Hebrew Rehabilitation Center"
+  },
+  "042103591": {
+    "EIN": "042103591",
+    "totalFunctionalExpenses": 292087720,
+    "name": "MASSACHUSETTS EYE & EAR INFIRMARY"
+  },
+  "042263040": {
+    "EIN": "042263040",
+    "totalFunctionalExpenses": 1681302389,
+    "name": "Dana-Farber Cancer Institute Inc"
+  }
 }
