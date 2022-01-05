@@ -6,3 +6,4 @@ indexes/*.json
 cache/*
 yarn.lock
 report-csv
+*.xlsx
