@@ -2,8 +2,7 @@ const fs = require("fs");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const yaml = require("js-yaml");
 
-const { getFields, extractFields } = require("./lib/extractFields");
-const getXMLData = require("./lib/getXMLData");
+const { getFields } = require("./lib/extractFields");
 
 const IGNORE = [
   "businessName",
@@ -12,6 +11,12 @@ const IGNORE = [
   "taxEndDate",
   "taxYear",
 ];
+
+const megaIndexes = [];
+for (file of fs.readdirSync("./mega-indexes")) {
+  const json = JSON.parse(fs.readFileSync(`./mega-indexes/${file}`));
+  megaIndexes.push(...json);
+}
 
 (async function () {
   // Make sure we have a valid command line
@@ -64,12 +69,14 @@ const IGNORE = [
   for (const einIndex in einsToProcess) {
     const ein = einsToProcess[einIndex];
 
-    console.log(`Processing ${ein}`);
+    const foundRecords = megaIndexes.filter(
+      (report) => report.ein === ein && config.years.includes(report.taxYear)
+    );
 
-    const xmlReports = await getXMLData(ein, config.years);
+    console.log(`Processing ${ein}: ${foundRecords.length} records`);
 
-    for (const year in xmlReports) {
-      const out = extractFields(xmlReports[year]);
+    for (const out of foundRecords) {
+      const year = out.taxYear;
 
       if (!businessNames[ein]) {
         businessNames[ein] = out.businessName;
