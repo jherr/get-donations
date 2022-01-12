@@ -12,10 +12,12 @@ const IGNORE = [
   "taxYear",
 ];
 
-const megaIndexes = [];
-for (file of fs.readdirSync("./mega-indexes")) {
-  const json = JSON.parse(fs.readFileSync(`./mega-indexes/${file}`));
-  megaIndexes.push(...json);
+const megaIndexes = {};
+for (file of fs.readdirSync("./mega-indexes").sort()) {
+  for (const row of JSON.parse(fs.readFileSync(`./mega-indexes/${file}`))) {
+    megaIndexes[row.ein] = megaIndexes[row.ein] ?? {};
+    megaIndexes[row.ein][row.taxYear] = row;
+  }
 }
 
 (async function () {
@@ -69,9 +71,7 @@ for (file of fs.readdirSync("./mega-indexes")) {
   for (const einIndex in einsToProcess) {
     const ein = einsToProcess[einIndex];
 
-    const foundRecords = megaIndexes.filter(
-      (report) => report.ein === ein && config.years.includes(report.taxYear)
-    );
+    const foundRecords = Object.values(megaIndexes[ein] || {});
 
     console.log(`Processing ${ein}: ${foundRecords.length} records`);
 
