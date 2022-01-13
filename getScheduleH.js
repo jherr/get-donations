@@ -30,12 +30,20 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
   // Read the report configuration file
   const config = yaml.load(fs.readFileSync(process.argv[2], "utf8"));
 
+  // Get the list of eins to process
+  const configEins =
+    config.eins === undefined
+      ? undefined
+      : config.eins === "all"
+      ? Object.keys(megaIndexes)
+      : config.eins;
+
   // Get the list of EINs to process and the names of the businesses if specified
   const businessNames = {
     ...(config.einsWithNames ?? {}),
   };
   const einsToProcess = Array.from(
-    new Set([...(config.eins ?? []), ...Object.keys(businessNames)])
+    new Set([...(configEins ?? []), ...Object.keys(businessNames)])
   );
 
   // Get the header fields and trim them if the report configuration specifies fields

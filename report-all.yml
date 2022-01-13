@@ -1,0 +1,18 @@
+# The list of years to process
+years:
+  # 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
+
+# EINS to process
+eins: "all"
+
+output: "report_{minYear}_{maxYear}_{einCount}.csv"
+
+csvDirectory: "report-csv"
