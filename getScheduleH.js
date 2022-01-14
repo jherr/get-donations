@@ -84,12 +84,22 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
   const records = [];
   const csvByEIN = {};
   const csvByYear = {};
+  let processedEins = 0;
   for (const einIndex in einsToProcess) {
     const ein = einsToProcess[einIndex];
 
     const foundRecords = Object.values(megaIndexes[ein] || {});
 
+    const yearCount = Object.keys(foundRecords).length;
+    if (
+      config.filters?.minimumYears &&
+      yearCount < config.filters?.minimumYears
+    ) {
+      continue;
+    }
+
     console.log(`Processing ${ein}: ${foundRecords.length} records`);
+    processedEins++;
 
     for (const out of foundRecords) {
       const year = out.taxYear;
@@ -124,6 +134,8 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
       }
     }
   }
+
+  console.log(`Processed ${processedEins} EINs`);
 
   // Write out the report
   await csvWriter.writeRecords(records);

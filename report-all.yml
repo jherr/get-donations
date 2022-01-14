@@ -14,6 +14,9 @@ years:
 eins:
   - "list:all"
 
+filters:
+  minimumYears: 2
+
 output: "report_{minYear}_{maxYear}_all.csv"
 
 csvDirectory: "report-csv"
