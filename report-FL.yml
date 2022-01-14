@@ -12,8 +12,8 @@ years:
 
 # EINS to process
 eins:
-  - "list:all"
+  - "list:FL"
 
-output: "report_{minYear}_{maxYear}_all.csv"
+output: "report_{minYear}_{maxYear}_FL.csv"
 
 csvDirectory: "report-csv"

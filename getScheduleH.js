@@ -31,12 +31,20 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
   const config = yaml.load(fs.readFileSync(process.argv[2], "utf8"));
 
   // Get the list of eins to process
-  const configEins =
-    config.eins === undefined
-      ? undefined
-      : config.eins === "all"
-      ? Object.keys(megaIndexes)
-      : config.eins;
+  const configEins = [];
+  for (const ein of config.eins ?? []) {
+    if (ein.includes("list:")) {
+      const [, listName] = ein.split(":");
+      const listEins = yaml.load(
+        fs.readFileSync(`./lists/${listName}.yml`, "utf8")
+      );
+      for (const listEin of Object.keys(listEins)) {
+        configEins.push(listEin);
+      }
+    } else {
+      configEins.push(ein);
+    }
+  }
 
   // Get the list of EINs to process and the names of the businesses if specified
   const businessNames = {
@@ -109,6 +117,9 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
           }));
         }
         const yearIndex = config.years.indexOf(parseInt(year));
+        if (!csvByYear[field][yearIndex]) {
+          csvByYear[field][yearIndex] = {};
+        }
         csvByYear[field][yearIndex][ein] = out[field];
       }
     }
