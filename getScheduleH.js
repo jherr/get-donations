@@ -30,6 +30,41 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
   // Read the report configuration file
   const config = yaml.load(fs.readFileSync(process.argv[2], "utf8"));
 
+  // Parse up the filters
+  const filters = [];
+  const configFilters = config.filters || {};
+  if (configFilters.minimumYears) {
+    filters.push((rows) =>
+      rows.length > configFilters.minimumYears ? rows : []
+    );
+  }
+  if (configFilters.fieldValue) {
+    for (const filterDef of configFilters.fieldValue) {
+      if (filterDef.operator === "includes") {
+        const lcValue = filterDef.value.toLowerCase();
+        filters.push((rows) =>
+          rows.filter((row) =>
+            row[filterDef.name].toLowerCase().includes(lcValue)
+          )
+        );
+      } else if (filterDef.operator === "gt") {
+        const value = parseFloat(filterDef.value);
+        filters.push((rows) =>
+          rows.filter((row) => row[filterDef.name] > value)
+        );
+      } else if (filterDef.operator === "lt") {
+        const value = parseFloat(filterDef.value);
+        filters.push((rows) =>
+          rows.filter((row) => row[filterDef.name] < value)
+        );
+      } else {
+        filters.push((rows) =>
+          rows.filter((row) => row[filterDef.name] === filterDef.value)
+        );
+      }
+    }
+  }
+
   // Get the list of eins to process
   const configEins = [];
   for (const ein of config.eins ?? []) {
@@ -84,24 +119,24 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
   const records = [];
   const csvByEIN = {};
   const csvByYear = {};
-  let processedEins = 0;
+  const processedEins = new Set();
   for (const einIndex in einsToProcess) {
     const ein = einsToProcess[einIndex];
 
     const foundRecords = Object.values(megaIndexes[ein] || {});
 
-    const yearCount = Object.keys(foundRecords).length;
-    if (
-      config.filters?.minimumYears &&
-      yearCount < config.filters?.minimumYears
-    ) {
-      continue;
+    let rows = Object.values(foundRecords);
+    for (const filter of filters) {
+      rows = filter(rows);
     }
 
-    console.log(`Processing ${ein}: ${foundRecords.length} records`);
-    processedEins++;
+    if (rows.length) {
+      // console.log(`Processing ${ein}: ${rows.length} records`);
+    }
 
-    for (const out of foundRecords) {
+    for (const out of rows) {
+      processedEins.add(out.ein);
+
       const year = out.taxYear;
 
       if (!businessNames[ein]) {
@@ -135,7 +170,7 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
     }
   }
 
-  console.log(`Processed ${processedEins} EINs`);
+  console.log(`Processed ${Array.from(processedEins).length} EINs`);
 
   // Write out the report
   await csvWriter.writeRecords(records);

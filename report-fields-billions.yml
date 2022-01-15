@@ -1,0 +1,26 @@
+# The list of years to process
+years:
+  # 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
+
+# EINS to process
+eins:
+  - "list:all"
+
+# Get only records with over a billion dollars reported on field SchH_I_7_k_e
+filters:
+  fieldValue:
+    - name: "SchH_I_7_k_e"
+      operator: "gt"
+      value: 1000000000
+
+output: "report_{minYear}_{maxYear}_fields_billions.csv"
+
+csvDirectory: "report-csv"

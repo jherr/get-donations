@@ -1,0 +1,34 @@
+# The list of years to process
+years:
+  # 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
+
+# EINS to process
+eins:
+  - "list:all"
+
+fields:
+  - "Business Name"
+  - "Tax Year"
+  - "SchH_I_7_k_e"
+
+# Get only reports where the "SchH_I_7_k_e" field is between $300M and $500M
+filters:
+  fieldValue:
+    - name: "SchH_I_7_k_e"
+      operator: "gt"
+      value: 30000000
+    - name: "SchH_I_7_k_e"
+      operator: "lt"
+      value: 50000000
+
+output: "report_{minYear}_{maxYear}_fields_ranged.csv"
+
+csvDirectory: "report-csv"
