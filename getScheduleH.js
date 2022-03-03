@@ -116,7 +116,6 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
       });
     }
   }
-  console.log(header);
 
   // Create the CSV report path
   const replacementValues = {
@@ -172,6 +171,9 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
           if (filters.every((filter) => formLine.includes(filter))) {
             out[name] = ft.explanationText;
           }
+          // else if (filters.some((filter) => formLine.includes(filter))) {
+          //   console.log(formLine);
+          // }
         }
       }
 
