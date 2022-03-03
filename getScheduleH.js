@@ -10,6 +10,7 @@ const IGNORE = [
   "returnTimeStamp",
   "taxEndDate",
   "taxYear",
+  "freeText",
 ];
 
 const megaIndexes = {};
@@ -91,12 +92,31 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
 
   // Get the header fields and trim them if the report configuration specifies fields
   let header = getFields();
+  const freeTextFields = [];
   if (config.fields) {
-    const regexes = config.fields.map((field) => new RegExp(field));
+    const regexes = [];
+    for (const field of config.fields) {
+      if (field.includes("freeText")) {
+        const [_, headerName, ...filters] = field.split(":");
+        freeTextFields.push({
+          headerName,
+          filters: filters.map((f) => f.toLowerCase()),
+        });
+      } else {
+        regexes.push(new RegExp(field));
+      }
+    }
     header = header.filter((field) =>
       regexes.some((regex) => regex.test(field.title))
     );
+    for (const field of freeTextFields) {
+      header.push({
+        title: field.headerName,
+        id: field.headerName,
+      });
+    }
   }
+  console.log(header);
 
   // Create the CSV report path
   const replacementValues = {
@@ -143,6 +163,17 @@ for (file of fs.readdirSync("./mega-indexes").sort()) {
         businessNames[ein] = out.businessName;
       }
       out.businessName = businessNames[ein] ?? out.businessName;
+
+      for (const field of freeTextFields) {
+        const name = field.headerName;
+        const filters = field.filters;
+        for (const ft of out.freeText) {
+          const formLine = ft.formLine.toLowerCase();
+          if (filters.every((filter) => formLine.includes(filter))) {
+            out[name] = ft.explanationText;
+          }
+        }
+      }
 
       records.push(out);
 
