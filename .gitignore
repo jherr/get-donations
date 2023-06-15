@@ -8,3 +8,5 @@ cache/*
 yarn.lock
 report-csv
 *.xlsx
+propublica/pages
+propublica/xml

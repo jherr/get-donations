@@ -2,6 +2,8 @@ const fs = require("fs");
 const { extractFields, isValidFormat } = require("../lib/extractFields");
 const { DOMParser } = require("xmldom");
 
+const PROPUBLICA_DIR = "./propublica/xml";
+
 const megaIndex = [];
 
 const [, , year] = process.argv;
@@ -9,10 +11,8 @@ const [, , year] = process.argv;
 console.log(`Processing ${year}...`);
 
 const files = fs
-  .readFileSync("./scheduleh-sorted.txt")
-  .toString()
-  .split("\n")
-  .filter((line) => line.includes(`download990xml_${year}`));
+  .readdirSync(PROPUBLICA_DIR)
+  .filter((f) => f.startsWith(year) && f.endsWith(".xml"));
 
 let count = 0;
 for (const f in files) {
@@ -21,7 +21,7 @@ for (const f in files) {
     console.log(`${f} of ${files.length}`);
   }
   try {
-    const xml = fs.readFileSync(file).toString();
+    const xml = fs.readFileSync(`${PROPUBLICA_DIR}/${file}`).toString();
     const doc = new DOMParser().parseFromString(xml, "text/xml");
     if (isValidFormat(doc)) {
       const data = extractFields(doc);
@@ -39,4 +39,7 @@ for (const f in files) {
 
 console.log(`Found ${count} out of ${files.length} files`);
 
-fs.writeFileSync(`./${year}-index.json`, JSON.stringify(megaIndex));
+fs.writeFileSync(
+  `./mega-indexes/${year}-index.json`,
+  JSON.stringify(megaIndex)
+);
