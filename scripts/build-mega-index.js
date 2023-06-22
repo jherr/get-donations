@@ -10,9 +10,13 @@ const [, , year] = process.argv;
 
 console.log(`Processing ${year}...`);
 
-const files = fs
-  .readdirSync(PROPUBLICA_DIR)
-  .filter((f) => f.startsWith(year) && f.endsWith(".xml"));
+const files = fs.readdirSync(PROPUBLICA_DIR).filter((f) => {
+  if (!f.endsWith(".xml")) {
+    return false;
+  }
+  const y = f.match(/(\d{4})/)[1];
+  return +y >= year;
+});
 
 let count = 0;
 for (const f in files) {
@@ -25,12 +29,12 @@ for (const f in files) {
     const doc = new DOMParser().parseFromString(xml, "text/xml");
     if (isValidFormat(doc)) {
       const data = extractFields(doc);
-      if (data.SchH_I_7_k_e > 0) {
+      if (data.SchH_I_7_k_e > 0 && data.taxYear === +year) {
         megaIndex.push(data);
         count++;
       }
     } else {
-      console.error(`Invalid format: ${file}`);
+      // console.error(`Invalid format: ${file}`);
     }
   } catch (e) {
     console.error(`Error reading: ${file} : ${e}`);
